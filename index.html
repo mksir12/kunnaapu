@@ -304,7 +304,6 @@
 
     try {
       const res = await fetch(`https://jerrycoder.onrender.com/identify?url=${encodeURIComponent(url)}`);
-      const res = await fetch(`/identify?url=${encodeURIComponent(url)}`);
 const data = await res.json();
 
 let content = '';
