@@ -283,12 +283,19 @@ const detectData = await detectRes.json();
 
 if (detectData.status === "success" && detectData.result) {
   const { title, artist, image, shazam_url } = detectData.result;
+  const coverImage = image && image.trim() !== "" 
+    ? image 
+    : "https://ar-hosting.pages.dev/1751890521453.jpg";
+
   const randomLogo = logos[Math.floor(Math.random() * logos.length)];
 
   resultBox.innerHTML = `
-    <div style="text-align:left; margin-top:15px;">
-      <p style="font-size:14px; color:#999;">Uploaded to: <a href="${fileUrl}" target="_blank" style="color:#007bff;">${fileUrl}</a></p>
-      <img src="${image}" alt="Cover Art" style="max-width:100%; border-radius:10px; margin:12px 0;" />
+    <div style="text-align:left; margin-top:15px; background:#fff; padding:15px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1); max-width:500px; word-wrap:break-word;">
+      <p style="font-size:14px; color:#555; margin-bottom:12px;">
+        <strong>Uploaded to:</strong><br>
+        <a href="${fileUrl}" target="_blank" style="color:#007bff; word-break:break-all;">${fileUrl}</a>
+      </p>
+      <img src="${coverImage}" alt="Cover Art" style="max-width:100%; border-radius:10px; margin-bottom:12px;" />
       <p><strong>Title</strong> : ${title}<br><br><strong>Artist</strong> : ${artist}</p>
       ${shazam_url ? `
         <p style="margin-top:12px;">
@@ -302,7 +309,7 @@ if (detectData.status === "success" && detectData.result) {
   `;
 } else {
   resultBox.innerHTML = `<blockquote>${JSON.stringify(detectData, null, 2).replace(/\n/g, "<br>")}</blockquote>`;
-        }
+}
     } catch (err) {
       resultBox.innerHTML = `<blockquote>Upload failed: ${err.message}</blockquote>`;
     }
