@@ -304,25 +304,30 @@
 
     try {
       const res = await fetch(`https://jerrycoder.onrender.com/identify?url=${encodeURIComponent(url)}`);
-const data = await res.json();
+      const data = await res.json();
 
-let content = '';
+      let content = '';
 
-// If song info is available
-if (data?.result?.image && data?.result?.title && data?.result?.artist) {
-  content += `
-    <div style="text-align:center; margin-bottom:15px;">
-      <img src="${data.result.image}" alt="Cover Art" style="max-width:100%; border-radius:10px; margin-bottom:8px;" />
-      <p><strong>${data.result.title}</strong><br><em>${data.result.artist}</em></p>
-      ${data.result.shazam_url ? `<p><a href="${data.result.shazam_url}" target="_blank">🔗 View on Shazam</a></p>` : ''}
-    </div>
-  `;
-}
+      const image = data?.result?.image || "https://ar-hosting.pages.dev/1751890521453.jpg";
+      const title = data?.result?.title || "Unknown Title";
+      const artist = data?.result?.artist || "Unknown Artist";
+      const shazamURL = data?.result?.shazam_url;
+
+      content += `
+        <div style="text-align:center; margin-bottom:15px;">
+          <img src="${image}" alt="Cover Art" style="max-width:100%; border-radius:10px; margin-bottom:8px;" />
+          <p><strong>${title}</strong><br><em>${artist}</em></p>
+          ${shazamURL ? `<p><a href="${shazamURL}" target="_blank">🔗 View on Shazam</a></p>` : ''}
+        </div>
+      `;
+
+      resultBox.innerHTML = content;
     } catch (err) {
-      resultBox.innerHTML = "<blockquote>Failed to detect song.</blockquote>";
+      resultBox.innerHTML = "<p style='color:red;'>Failed to detect song.</p>";
     }
   }
 </script>
+
 <script>
   const bgColors = [
     'linear-gradient(135deg, #1a1f38, #2d294e, #0e1628)',
@@ -340,4 +345,3 @@ if (data?.result?.image && data?.result?.title && data?.result?.artist) {
 </script>
 </body>
 </html>
-
