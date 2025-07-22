@@ -1,7 +1,5 @@
-// File: /api/yt.js
-
 import axios from 'axios';
-import cheerio from 'cheerio';
+import * as cheerio from 'cheerio'; // 👈 fixed import
 
 const extractVideoId = (url) => {
   const match = url.match(/(?:v=|\/)([0-9A-Za-z_-]{11})/);
