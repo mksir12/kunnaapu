@@ -290,8 +290,8 @@ if (detectData.status === "success" && detectData.result) {
   const randomLogo = logos[Math.floor(Math.random() * logos.length)];
 
   resultBox.innerHTML = `
-    <div style="text-align:left; margin-top:15px; background:#fff; padding:15px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1); max-width:500px; word-wrap:break-word;">
-      <p style="font-size:14px; color:#555; margin-bottom:12px;">
+    <div style="text-align:left; margin-top:15px; background:transparent; padding:15px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1); max-width:500px; word-wrap:break-word;">
+  <p style="font-size:14px; color:#555; margin-bottom:12px;">
         <strong>Uploaded to:</strong><br>
         <a href="${fileUrl}" target="_blank" style="color:#007bff; word-break:break-all;">${fileUrl}</a>
       </p>
