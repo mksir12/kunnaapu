@@ -318,12 +318,6 @@ if (data?.result?.image && data?.result?.title && data?.result?.artist) {
     </div>
   `;
 }
-
-// Include raw JSON block
-const fullText = `Requested Url : ${location.origin}/identify?url=${url}\n\n${JSON.stringify(data, null, 2)}`;
-content += `<blockquote>${fullText.replace(/\n/g, "<br>")}</blockquote>`;
-resultBox.innerHTML = content;
-
     } catch (err) {
       resultBox.innerHTML = "<blockquote>Failed to detect song.</blockquote>";
     }
