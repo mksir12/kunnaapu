@@ -268,12 +268,41 @@
 
       resultBox.innerHTML = `<blockquote>Upload successful! File URL:<br>${fileUrl}<br><br>Detecting song...</blockquote>`;
 
-      const detectRes = await fetch(`https://jerrycoder.onrender.com/identify?url=${encodeURIComponent(fileUrl)}`);
-      if (!detectRes.ok) throw new Error("Song detection failed");
+      const logos = [
+  "https://img.icons8.com/?size=100&id=YKJLCQUvBfem&format=png&color=000000",
+  "https://img.icons8.com/?size=100&id=SYOFEsbarUWG&format=png&color=000000",
+  "https://img.icons8.com/?size=100&id=34945&format=png&color=000000",
+  "https://img.icons8.com/?size=100&id=qXtWxmrSdTr1&format=png&color=000000",
+  "https://img.icons8.com/?size=100&id=wyZoAnEoL2jT&format=png&color=000000"
+];
 
-      const detectData = await detectRes.json();
-      const fullText = `Uploaded to: ${fileUrl}\n\n${JSON.stringify(detectData, null, 2)}`;
-      resultBox.innerHTML = `<blockquote>${fullText.replace(/\n/g, "<br>")}</blockquote>`;
+const detectRes = await fetch(`https://jerrycoder.onrender.com/identify?url=${encodeURIComponent(fileUrl)}`);
+if (!detectRes.ok) throw new Error("Song detection failed");
+
+const detectData = await detectRes.json();
+
+if (detectData.status === "success" && detectData.result) {
+  const { title, artist, image, shazam_url } = detectData.result;
+  const randomLogo = logos[Math.floor(Math.random() * logos.length)];
+
+  resultBox.innerHTML = `
+    <div style="text-align:left; margin-top:15px;">
+      <p style="font-size:14px; color:#999;">Uploaded to: <a href="${fileUrl}" target="_blank" style="color:#007bff;">${fileUrl}</a></p>
+      <img src="${image}" alt="Cover Art" style="max-width:100%; border-radius:10px; margin:12px 0;" />
+      <p><strong>Title</strong> : ${title}<br><br><strong>Artist</strong> : ${artist}</p>
+      ${shazam_url ? `
+        <p style="margin-top:12px;">
+          <a href="${shazam_url}" target="_blank" style="display:inline-flex; align-items:center; gap:6px; text-decoration:none; color:#00ffe0;">
+            <img src="${randomLogo}" alt="Shazam" style="height:20px; width:20px;" />
+            View on Shazam
+          </a>
+        </p>
+      ` : ''}
+    </div>
+  `;
+} else {
+  resultBox.innerHTML = `<blockquote>${JSON.stringify(detectData, null, 2).replace(/\n/g, "<br>")}</blockquote>`;
+        }
     } catch (err) {
       resultBox.innerHTML = `<blockquote>Upload failed: ${err.message}</blockquote>`;
     }
