@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>JerryCoder Music Identifier</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1c92d2, #f2fcfe);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px;
+      color: #000;
+    }
+
+    form {
+      margin-bottom: 30px;
+    }
+
+    input[type="text"] {
+      width: 400px;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #0072ff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    #result {
+      text-align: left;
+      width: 500px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    .song-image {
+      margin-top: 15px;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+    }
+
+    .caption {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    a {
+      color: #0072ff;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎧 JerryCoder Music Identifier</h1>
+
+  <form id="recognition-form">
+    <input type="text" id="video-url" placeholder="Enter YouTube/Facebook video URL" />
+    <button type="submit">Identify</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("recognition-form");
+      const input = document.getElementById("video-url");
+      const resultBox = document.getElementById("result");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const videoURL = input.value.trim();
+        if (!videoURL) {
+          alert("Please enter a valid video URL");
+          return;
+        }
+
+        resultBox.innerHTML = "<p>🔄 Processing...</p>";
+
+        try {
+          const res = await fetch(\`https://jerrycoder.onrender.com/identify?url=\${encodeURIComponent(videoURL)}\`);
+          const data = await res.json();
+
+          if (data.status === "success") {
+            const song = data.result;
+            resultBox.innerHTML = \`
+              <h3>✅ Song Identified</h3>
+              <img src="\${song.image}" alt="Cover Art" class="song-image" />
+              <div class="caption"><strong>Title:</strong> \${song.title}</div>
+              <div class="caption"><strong>Artist:</strong> \${song.artist}</div>
+              <div class="caption"><strong>Link:</strong> <a href="\${song.shazam_url}" target="_blank">Open in Shazam</a></div>
+              <div class="caption"><strong>Time Taken:</strong> \${data.time_taken}</div>
+              <div class="caption"><strong>Powered by:</strong> \${data.creator}</div>
+            \`;
+          } else {
+            resultBox.innerHTML = \`<p style="color:red;">❌ Error: \${data.msg}</p>\`;
+          }
+        } catch (error) {
+          resultBox.innerHTML = \`<p style="color:red;">❌ Failed to connect to the API</p>\`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
