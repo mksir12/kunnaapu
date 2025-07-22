@@ -313,14 +313,24 @@
       const artist = data?.result?.artist || "Unknown Artist";
       const shazamURL = data?.result?.shazam_url;
 
-      content += `
+      const logos = [
+  "https://img.icons8.com/?size=100&id=YKJLCQUvBfem&format=png&color=000000",
+  "https://img.icons8.com/?size=100&id=SYOFEsbarUWG&format=png&color=000000",
+  "https://img.icons8.com/?size=100&id=34945&format=png&color=000000",
+  "https://img.icons8.com/?size=100&id=qXtWxmrSdTr1&format=png&color=000000",
+  "https://img.icons8.com/?size=100&id=wyZoAnEoL2jT&format=png&color=000000"
+];
+
+const randomLogo = logos[Math.floor(Math.random() * logos.length)];
+
+content += `
   <div style="text-align:left; margin-bottom:15px;">
     <img src="${image}" alt="Cover Art" style="max-width:100%; border-radius:10px; margin-bottom:12px;" />
     <p><strong>Title</strong> : ${title}<br><br><strong>Artist</strong> : ${artist}</p>
     ${shazamURL ? `
       <p style="margin-top:12px;">
         <a href="${shazamURL}" target="_blank" style="display:inline-flex; align-items:center; gap:6px; text-decoration:none; color:#00ffe0;">
-          <img src="https://img.icons8.com/?size=100&id=YKJLCQUvBfem&format=png&color=000000" alt="Shazam" style="height:20px; width:20px; vertical-align:middle;" />
+          <img src="${randomLogo}" alt="Shazam" style="height:20px; width:20px; vertical-align:middle;" />
           View on Shazam
         </a>
       </p>
