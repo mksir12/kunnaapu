@@ -251,7 +251,7 @@
     formData.append("file", file);
 
     try {
-      const uploadRes = await fetch("https://jerrycoder.onrender.com/upload_to_temp", {
+      const uploadRes = await fetch("https://jerrycoderr.onrender.com/upload_to_temp", {
         method: "POST",
         body: formData,
       });
@@ -276,7 +276,7 @@
   "https://img.icons8.com/?size=100&id=wyZoAnEoL2jT&format=png&color=000000"
 ];
 
-const detectRes = await fetch(`https://jerrycoder.onrender.com/identify?url=${encodeURIComponent(fileUrl)}`);
+const detectRes = await fetch(`https://jerrycoderr.onrender.com/identify?url=${encodeURIComponent(fileUrl)}`);
 if (!detectRes.ok) throw new Error("Song detection failed");
 
 const detectData = await detectRes.json();
@@ -339,7 +339,7 @@ if (detectData.status === "success" && detectData.result) {
     resultBox.innerText = "Fetching song details...";
 
     try {
-      const res = await fetch(`https://jerrycoder.onrender.com/identify?url=${encodeURIComponent(url)}`);
+      const res = await fetch(`https://jerrycoderr.onrender.com/identify?url=${encodeURIComponent(url)}`);
       const data = await res.json();
 
       let content = '';
