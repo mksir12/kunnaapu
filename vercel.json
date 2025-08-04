@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/yt", "destination": "/yt.html" }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
+}
