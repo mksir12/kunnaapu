@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creative Website Development</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -23,7 +24,8 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            /* Applied Mono font globally */
+            font-family: 'JetBrains Mono', monospace;
             scroll-behavior: smooth;
         }
 
@@ -56,7 +58,7 @@
             font-size: 24px;
             font-weight: 700;
             color: #fff;
-            letter-spacing: 1px;
+            letter-spacing: -1px;
         }
 
         .logo span {
@@ -73,6 +75,7 @@
             color: var(--text-main);
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.9rem;
             transition: color 0.3s;
         }
 
@@ -80,16 +83,31 @@
             color: var(--accent-primary);
         }
 
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
         .ist-clock-container {
             background: var(--glass-bg);
             padding: 8px 15px;
-            border-radius: 20px;
+            border-radius: 8px;
             border: 1px solid var(--glass-border);
-            font-size: 14px;
+            font-size: 13px;
             display: flex;
             align-items: center;
             gap: 8px;
             color: var(--accent-primary);
+        }
+
+        /* Hamburger Menu Icon */
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            cursor: pointer;
+            z-index: 1001;
         }
 
         /* --- Hero Section --- */
@@ -105,7 +123,7 @@
         }
 
         .hero-title {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: 20px;
@@ -113,10 +131,11 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: fadeInDown 1s ease;
+            letter-spacing: -1px;
         }
 
         .hero-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--text-muted);
             max-width: 600px;
             margin-bottom: 40px;
@@ -125,17 +144,19 @@
 
         .cta-btn {
             padding: 15px 40px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             color: #fff;
             background: var(--accent-primary);
             border: none;
-            border-radius: 30px;
+            border-radius: 8px;
             cursor: pointer;
             text-decoration: none;
             box-shadow: 0 10px 20px var(--accent-glow);
             transition: transform 0.3s, box-shadow 0.3s;
             animation: fadeInUp 1s ease 0.6s both;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .cta-btn:hover {
@@ -145,12 +166,12 @@
 
         .price-tag {
             margin-top: 30px;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 600;
             color: #10b981;
             background: rgba(16, 185, 129, 0.1);
             padding: 10px 20px;
-            border-radius: 20px;
+            border-radius: 8px;
             border: 1px solid rgba(16, 185, 129, 0.2);
             animation: fadeInUp 1s ease 0.9s both;
         }
@@ -164,9 +185,10 @@
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin-bottom: 50px;
             position: relative;
+            letter-spacing: -1px;
         }
 
         .section-title::after {
@@ -191,7 +213,7 @@
         .service-card {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 20px;
+            border-radius: 15px;
             padding: 40px 30px;
             text-align: center;
             backdrop-filter: blur(10px);
@@ -206,19 +228,19 @@
         }
 
         .service-icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--accent-primary);
             margin-bottom: 20px;
         }
 
         .service-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin-bottom: 15px;
         }
 
         .service-card p {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         /* --- Reviews Section --- */
@@ -231,7 +253,7 @@
         .review-card {
             background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
             border: 1px solid var(--glass-border);
-            border-radius: 20px;
+            border-radius: 15px;
             padding: 30px;
             position: relative;
         }
@@ -239,7 +261,7 @@
         .stars {
             color: #fbbf24;
             margin-bottom: 15px;
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
 
         .review-text {
@@ -247,6 +269,7 @@
             font-style: italic;
             margin-bottom: 20px;
             line-height: 1.6;
+            font-size: 0.9rem;
         }
 
         .reviewer {
@@ -256,19 +279,19 @@
         }
 
         .reviewer-img {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             background: var(--accent-primary);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
 
         .reviewer-info h4 {
-            font-size: 1rem;
+            font-size: 0.95rem;
             margin-bottom: 2px;
         }
 
@@ -283,7 +306,7 @@
             gap: 50px;
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 20px;
+            border-radius: 15px;
             padding: 50px;
             backdrop-filter: blur(10px);
         }
@@ -293,13 +316,14 @@
         }
 
         .contact-info h3 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 20px;
         }
 
         .contact-info p {
             color: var(--text-muted);
             margin-bottom: 30px;
+            font-size: 0.9rem;
         }
 
         .info-item {
@@ -307,12 +331,12 @@
             align-items: center;
             gap: 15px;
             margin-bottom: 20px;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .info-item i {
             color: var(--accent-primary);
-            font-size: 1.5rem;
+            font-size: 1.2rem;
         }
 
         .contact-form {
@@ -332,9 +356,9 @@
             padding: 15px 20px;
             background: rgba(0,0,0,0.2);
             border: 1px solid var(--glass-border);
-            border-radius: 10px;
+            border-radius: 8px;
             color: #fff;
-            font-size: 1rem;
+            font-size: 0.9rem;
             outline: none;
             transition: border-color 0.3s;
         }
@@ -354,11 +378,13 @@
             color: #fff;
             border: none;
             padding: 15px;
-            border-radius: 10px;
-            font-size: 1.1rem;
+            border-radius: 8px;
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: background 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .submit-btn:hover {
@@ -371,6 +397,7 @@
             border-top: 1px solid var(--glass-border);
             color: var(--text-muted);
             margin-top: 50px;
+            font-size: 0.8rem;
         }
 
         /* --- Animations --- */
@@ -395,23 +422,64 @@
             transform: translateY(0);
         }
 
-        /* Responsive Design */
+        /* =========================================
+           MOBILE RESPONSIVE FIXES (Below 900px)
+           ========================================= */
         @media (max-width: 900px) {
-            .contact-container {
-                flex-direction: column;
-                padding: 30px;
-            }
-            .hero-title {
-                font-size: 2.5rem;
-            }
             nav {
                 padding: 15px 20px;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
             }
+
+            .mobile-menu-btn {
+                display: block; /* Show hamburger menu */
+            }
+
             .nav-links {
-                display: none; /* Hidden on mobile for simplicity in single file */
+                position: fixed;
+                top: 65px;
+                left: -100%; /* Hide off-screen by default */
+                width: 100%;
+                height: calc(100vh - 65px);
+                background: rgba(15, 23, 42, 0.98);
+                backdrop-filter: blur(15px);
+                flex-direction: column;
+                justify-content: center;
+                gap: 40px;
+                transition: left 0.4s ease;
+                border-top: 1px solid var(--glass-border);
+            }
+
+            .nav-links.active {
+                left: 0; /* Slide in when active */
+            }
+
+            .nav-links a {
+                font-size: 1.5rem;
+            }
+
+            section {
+                padding: 80px 20px;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+                margin-top: 40px;
+            }
+
+            .contact-container {
+                flex-direction: column;
+                padding: 30px 20px;
+                gap: 40px;
+            }
+
+            .ist-clock-container {
+                display: none; /* Hide clock on mobile to save header space */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-grid, .reviews-container {
+                grid-template-columns: 1fr; /* Stack into single column for very small screens */
             }
         }
     </style>
@@ -420,15 +488,21 @@
 
     <nav>
         <div class="logo">Creative<span>Web</span></div>
-        <div class="nav-links">
+        <div class="nav-right">
+            <div class="ist-clock-container">
+                <i class="fa-regular fa-clock"></i>
+                <span id="ist-time">Loading IST...</span>
+            </div>
+            <div class="mobile-menu-btn" id="menu-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+        
+        <div class="nav-links" id="nav-menu">
             <a href="#home">Home</a>
             <a href="#services">Services</a>
             <a href="#reviews">Reviews</a>
             <a href="#contact">Contact</a>
-        </div>
-        <div class="ist-clock-container">
-            <i class="fa-regular fa-clock"></i>
-            <span id="ist-time">Loading IST...</span>
         </div>
     </nav>
 
@@ -543,10 +617,36 @@
     </footer>
 
     <script>
-        // 1. Live Indian Standard Time (IST) Clock
+        // 1. Mobile Menu Toggle Logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            // Change icon from bars to X
+            const icon = menuToggle.querySelector('i');
+            if(navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.querySelector('i').classList.remove('fa-xmark');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // 2. Live Indian Standard Time (IST) Clock
         function updateClock() {
             const now = new Date();
-            // Format time specifically for Asia/Kolkata timezone
             const options = { 
                 timeZone: 'Asia/Kolkata', 
                 hour: '2-digit', 
@@ -559,9 +659,9 @@
         }
         
         setInterval(updateClock, 1000);
-        updateClock(); // Initial call
+        updateClock(); 
 
-        // 2. Scroll Reveal Animation Logic
+        // 3. Scroll Reveal Animation Logic
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -575,23 +675,21 @@
             }
         }
         window.addEventListener("scroll", reveal);
-        reveal(); // Trigger on load
+        reveal(); 
 
-        // 3. Frontend Form Submission Handling
+        // 4. Frontend Form Submission Handling
         document.getElementById('premiumForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent page reload
+            e.preventDefault(); 
             const btn = document.getElementById('submitBtn');
             const originalText = btn.innerHTML;
             
-            // Visual feedback for submission
             btn.innerHTML = 'Sending... <i class="fa-solid fa-spinner fa-spin"></i>';
-            btn.style.background = '#10b981'; // Success green
+            btn.style.background = '#10b981'; 
             
             setTimeout(() => {
                 btn.innerHTML = 'Message Sent! <i class="fa-solid fa-check"></i>';
-                this.reset(); // Clear form
+                this.reset(); 
                 
-                // Reset button after 3 seconds
                 setTimeout(() => {
                     btn.innerHTML = originalText;
                     btn.style.background = 'var(--accent-primary)';
