@@ -658,13 +658,13 @@
                 </div>
             </div>
 
-            <form action="https://formsubmit.co/sahalpv0011@gmail.com" method="POST">
+            <form id="contactForm">
                 <input type="text" name="Name" class="form-control" placeholder="Full Name" required>
                 <input type="email" name="Email" class="form-control" placeholder="Email Address" required>
                 <textarea name="Message" class="form-control" placeholder="Project Details..." required></textarea>
                 <input type="hidden" name="_captcha" value="false">
                 
-                <button type="submit" class="cta-btn" style="width: 100%; justify-content: center;">
+                <button type="submit" class="cta-btn" id="submitBtn" style="width: 100%; justify-content: center;">
                     Send Message <i class="fa-solid fa-paper-plane"></i>
                 </button>
             </form>
@@ -714,6 +714,51 @@
 
         document.querySelectorAll('.reveal').forEach((el) => {
             observer.observe(el);
+        });
+
+        // Real Background Form Submission (No Redirects)
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Stops the page from redirecting
+            
+            const form = this;
+            const btn = document.getElementById('submitBtn');
+            const originalText = btn.innerHTML;
+            
+            // Show loading animation
+            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Processing...';
+            btn.style.background = '#8b5cf6'; // Purple loading color
+            
+            // Send data to FormSubmit in the background
+            fetch("https://formsubmit.co/ajax/sahalpv0011@gmail.com", {
+                method: "POST",
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Show Success Message
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> Request Sent';
+                btn.style.background = '#10b981'; // Green success color
+                form.reset(); 
+                
+                // Reset button to normal after 3 seconds
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = 'linear-gradient(135deg, var(--primary), #2563eb)';
+                }, 3000);
+            })
+            .catch(error => {
+                // Show Error Message if something fails
+                btn.innerHTML = '<i class="fa-solid fa-xmark"></i> Failed to send';
+                btn.style.background = '#ef4444'; // Red error color
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = 'linear-gradient(135deg, var(--primary), #2563eb)';
+                }, 3000);
+            });
         });
 
     </script>
