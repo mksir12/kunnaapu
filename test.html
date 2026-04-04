@@ -658,21 +658,15 @@
                 </div>
             </div>
 
-            <form id="contactForm">
-                <form action="https://formsubmit.co/sahalpv0011@gmail.com" method="POST">
-    
-    <input type="text" name="Name" class="form-control" placeholder="Full Name" required>
-    
-    <input type="email" name="Email" class="form-control" placeholder="Email Address" required>
-    
-    <textarea name="Message" class="form-control" placeholder="Project Details..." required></textarea>
-    
-    <input type="hidden" name="_captcha" value="false">
-    
-    <button type="submit" class="cta-btn" style="width: 100%; justify-content: center;">
-        Send Message <i class="fa-solid fa-paper-plane"></i>
-    </button>
-</form>
+            <form action="https://formsubmit.co/sahalpv0011@gmail.com" method="POST">
+                <input type="text" name="Name" class="form-control" placeholder="Full Name" required>
+                <input type="email" name="Email" class="form-control" placeholder="Email Address" required>
+                <textarea name="Message" class="form-control" placeholder="Project Details..." required></textarea>
+                <input type="hidden" name="_captcha" value="false">
+                
+                <button type="submit" class="cta-btn" style="width: 100%; justify-content: center;">
+                    Send Message <i class="fa-solid fa-paper-plane"></i>
+                </button>
             </form>
         </div>
     </section>
@@ -722,25 +716,6 @@
             observer.observe(el);
         });
 
-        // Form Submit Simulation
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault(); 
-            const btn = document.getElementById('submitBtn');
-            const originalText = btn.innerHTML;
-            
-            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Processing...';
-            
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fa-solid fa-check"></i> Request Sent';
-                btn.style.background = '#10b981';
-                this.reset(); 
-                
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.style.background = 'linear-gradient(135deg, var(--primary), #2563eb)';
-                }, 3000);
-            }, 1500);
-        });
     </script>
 </body>
 </html>
