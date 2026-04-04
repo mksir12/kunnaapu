@@ -3,39 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Website Development</title>
+    <title>Creative Web | Premium Digital Services</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* CSS Variables for Premium Dark Theme */
+        /* --- Premium Theme Variables --- */
         :root {
-            --bg-color: #0f172a;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent-primary: #3b82f6;
-            --accent-glow: rgba(59, 130, 246, 0.5);
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --bg-dark: #0a0f1c;
+            --bg-card: rgba(20, 27, 45, 0.6);
+            --text-light: #f8fafc;
+            --text-dim: #94a3b8;
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.4);
+            --secondary: #8b5cf6;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --success: #10b981;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* Applied Mono font globally */
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Outfit', sans-serif;
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            background-color: var(--bg-dark);
+            color: var(--text-light);
             overflow-x: hidden;
+            /* Animated subtle gradient background */
             background-image: 
-                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.15), transparent 25%);
+                radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.15), transparent 40%),
+                radial-gradient(circle at 100% 100%, rgba(139, 92, 246, 0.12), transparent 40%);
             background-attachment: fixed;
         }
 
@@ -44,68 +46,70 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 20px 50px;
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 15, 28, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--glass-border);
             z-index: 1000;
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: 700;
+            font-size: 1.5rem;
+            font-weight: 800;
             color: #fff;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
-        .logo span {
-            color: var(--accent-primary);
-        }
+        .logo span { color: var(--primary); }
 
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 25px;
             align-items: center;
         }
 
         .nav-links a {
-            color: var(--text-main);
+            color: var(--text-light);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             transition: color 0.3s;
         }
 
-        .nav-links a:hover {
-            color: var(--accent-primary);
-        }
+        .nav-links a:hover { color: var(--primary); }
 
         .nav-right {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
         }
 
-        .ist-clock-container {
-            background: var(--glass-bg);
-            padding: 8px 15px;
-            border-radius: 8px;
+        .ist-clock {
+            background: var(--bg-card);
+            padding: 6px 12px;
+            border-radius: 6px;
             border: 1px solid var(--glass-border);
-            font-size: 13px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-dim);
             display: flex;
             align-items: center;
-            gap: 8px;
-            color: var(--accent-primary);
+            gap: 6px;
         }
 
-        /* Hamburger Menu Icon */
+        .ist-clock i { color: var(--primary); }
+
         .mobile-menu-btn {
             display: none;
             font-size: 1.5rem;
-            color: var(--text-main);
+            color: #fff;
             cursor: pointer;
             z-index: 1001;
         }
@@ -118,369 +122,412 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 20px;
-            padding-top: 80px;
+            padding: 100px 5% 50px;
+        }
+
+        .hero-badge {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            animation: fadeInDown 0.8s ease;
         }
 
         .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            line-height: 1.2;
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
             margin-bottom: 20px;
-            background: linear-gradient(to right, #fff, #94a3b8);
+            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: fadeInDown 1s ease;
-            letter-spacing: -1px;
+            letter-spacing: -1.5px;
+            animation: fadeInUp 0.8s ease 0.2s both;
         }
 
         .hero-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-muted);
+            font-size: 1.15rem;
+            color: var(--text-dim);
             max-width: 600px;
             margin-bottom: 40px;
-            animation: fadeInUp 1s ease 0.3s both;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s ease 0.4s both;
+            font-weight: 400;
         }
 
         .cta-btn {
-            padding: 15px 40px;
-            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            font-size: 1.05rem;
             font-weight: 600;
             color: #fff;
-            background: var(--accent-primary);
+            background: linear-gradient(135deg, var(--primary), #2563eb);
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
             text-decoration: none;
-            box-shadow: 0 10px 20px var(--accent-glow);
-            transition: transform 0.3s, box-shadow 0.3s;
-            animation: fadeInUp 1s ease 0.6s both;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            box-shadow: 0 10px 25px var(--primary-glow);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease 0.6s both;
         }
 
         .cta-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 25px var(--accent-glow);
+            box-shadow: 0 15px 30px var(--primary-glow);
         }
 
-        .price-tag {
-            margin-top: 30px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #10b981;
-            background: rgba(16, 185, 129, 0.1);
-            padding: 10px 20px;
-            border-radius: 8px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            animation: fadeInUp 1s ease 0.9s both;
-        }
-
-        /* --- Sections General --- */
+        /* --- Global Section Styles --- */
         section {
-            padding: 100px 50px;
+            padding: 100px 5%;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .section-title {
+        .section-header {
             text-align: center;
-            font-size: 2.2rem;
             margin-bottom: 50px;
-            position: relative;
-            letter-spacing: -1px;
         }
 
-        .section-title::after {
-            content: '';
-            width: 60px;
-            height: 4px;
-            background: var(--accent-primary);
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
         }
 
-        /* --- Services Grid --- */
+        .section-subtitle {
+            color: var(--text-dim);
+            font-size: 1.05rem;
+        }
+
+        /* --- Services Grid (Compact & Clean) --- */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 20px; /* Tighter gap for cleaner look */
         }
 
         .service-card {
-            background: var(--glass-bg);
+            background: var(--bg-card);
             border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 40px 30px;
-            text-align: center;
+            border-radius: 16px;
+            padding: 30px 25px; /* Compact padding */
             backdrop-filter: blur(10px);
-            transition: transform 0.4s, border-color 0.4s;
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent-primary);
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            background: rgba(30, 41, 59, 0.8);
         }
 
-        .service-icon {
-            font-size: 2.5rem;
-            color: var(--accent-primary);
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: var(--primary);
             margin-bottom: 20px;
         }
 
+        .service-card.social-ig .icon-box { color: #e1306c; background: rgba(225, 48, 108, 0.1); }
+        .service-card.social-fb .icon-box { color: #1877f2; background: rgba(24, 119, 242, 0.1); }
+        .service-card.social-yt .icon-box { color: #ff0000; background: rgba(255, 0, 0, 0.1); }
+
         .service-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #fff;
         }
 
         .service-card p {
-            color: var(--text-muted);
+            color: var(--text-dim);
             font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            flex-grow: 1;
         }
 
-        /* --- Reviews Section --- */
-        .reviews-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+        .feature-list {
+            list-style: none;
+            width: 100%;
+        }
+
+        .feature-list li {
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .feature-list li i {
+            color: var(--success);
+            font-size: 0.75rem;
+        }
+
+        /* --- Swipeable Reviews Section --- */
+        .reviews-wrapper {
+            /* Creates a swipeable horizontal scroll on mobile */
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 20px;
+            padding-bottom: 20px;
+            scrollbar-width: none; /* Firefox */
+        }
+        
+        .reviews-wrapper::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
         }
 
         .review-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+            min-width: 320px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
             border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 30px;
-            position: relative;
+            border-radius: 16px;
+            padding: 25px;
+            scroll-snap-align: start;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
         }
 
         .stars {
             color: #fbbf24;
+            font-size: 0.9rem;
             margin-bottom: 15px;
-            font-size: 1rem;
+            letter-spacing: 2px;
         }
 
         .review-text {
-            color: var(--text-muted);
-            font-style: italic;
-            margin-bottom: 20px;
+            color: var(--text-light);
+            font-size: 0.95rem;
             line-height: 1.6;
-            font-size: 0.9rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
         }
 
         .reviewer {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 15px;
         }
 
-        .reviewer-img {
-            width: 45px;
-            height: 45px;
-            background: var(--accent-primary);
+        .avatar {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
+            background: var(--primary);
             display: flex;
             justify-content: center;
             align-items: center;
-            font-weight: bold;
-            font-size: 1.1rem;
+            font-weight: 700;
+            font-size: 1rem;
         }
 
-        .reviewer-info h4 {
-            font-size: 0.95rem;
-            margin-bottom: 2px;
-        }
-
-        .reviewer-info span {
-            font-size: 0.8rem;
-            color: var(--accent-primary);
-        }
+        .reviewer-info h4 { font-size: 0.95rem; font-weight: 600; }
+        .reviewer-info span { font-size: 0.8rem; color: var(--text-dim); }
 
         /* --- Contact Section --- */
-        .contact-container {
-            display: flex;
-            gap: 50px;
-            background: var(--glass-bg);
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+            background: var(--bg-card);
             border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 50px;
-            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
         }
 
-        .contact-info {
-            flex: 1;
-        }
+        .contact-info h3 { font-size: 1.8rem; margin-bottom: 10px; }
+        .contact-info p { color: var(--text-dim); margin-bottom: 30px; font-size: 0.95rem; }
 
-        .contact-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-
-        .contact-info p {
-            color: var(--text-muted);
-            margin-bottom: 30px;
-            font-size: 0.9rem;
-        }
-
-        .info-item {
+        .info-box {
             display: flex;
             align-items: center;
             gap: 15px;
             margin-bottom: 20px;
-            font-size: 1rem;
-        }
-
-        .info-item i {
-            color: var(--accent-primary);
-            font-size: 1.2rem;
-        }
-
-        .contact-form {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .input-group {
-            position: relative;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 15px 20px;
             background: rgba(0,0,0,0.2);
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.02);
+        }
+
+        .info-box i { font-size: 1.2rem; color: var(--primary); }
+        .info-box div h4 { font-size: 0.9rem; color: var(--text-dim); font-weight: 400; margin-bottom: 2px; }
+        .info-box div span { font-size: 1rem; font-weight: 500; }
+
+        .form-group { margin-bottom: 15px; }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(0,0,0,0.3);
             border: 1px solid var(--glass-border);
-            border-radius: 8px;
+            border-radius: 10px;
             color: #fff;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             outline: none;
-            transition: border-color 0.3s;
+            transition: all 0.3s ease;
         }
 
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            border-color: var(--accent-primary);
+        .form-control:focus {
+            border-color: var(--primary);
+            background: rgba(0,0,0,0.5);
         }
 
-        .contact-form textarea {
-            height: 150px;
-            resize: none;
-        }
+        textarea.form-control { height: 120px; resize: none; }
 
         .submit-btn {
-            background: var(--accent-primary);
+            width: 100%;
+            background: var(--primary);
             color: #fff;
             border: none;
             padding: 15px;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: background 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .submit-btn:hover {
-            background: #2563eb;
-        }
+        .submit-btn:hover { background: #2563eb; }
 
         footer {
             text-align: center;
             padding: 30px;
             border-top: 1px solid var(--glass-border);
-            color: var(--text-muted);
-            margin-top: 50px;
-            font-size: 0.8rem;
+            color: var(--text-dim);
+            font-size: 0.85rem;
         }
 
-        /* --- Animations --- */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
+        /* --- Scroll Reveal Animations --- */
         .reveal {
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease-out;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
-
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
+        
+        /* Staggered delays for cards */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
 
-        /* =========================================
-           MOBILE RESPONSIVE FIXES (Below 900px)
-           ========================================= */
+        /* ====================================================
+           MOBILE RESPONSIVE FIXES (CLEAN & COMPACT BOXES)
+           ==================================================== */
         @media (max-width: 900px) {
-            nav {
-                padding: 15px 20px;
+            .contact-grid {
+                grid-template-columns: 1fr;
+                padding: 25px;
+                gap: 30px;
             }
+        }
 
-            .mobile-menu-btn {
-                display: block; /* Show hamburger menu */
-            }
+        @media (max-width: 768px) {
+            nav { padding: 15px 20px; }
+            .mobile-menu-btn { display: block; }
+            .ist-clock { display: none; } /* Hide clock on mobile to save space */
 
             .nav-links {
                 position: fixed;
-                top: 65px;
-                left: -100%; /* Hide off-screen by default */
+                top: 60px;
+                left: -100%;
                 width: 100%;
-                height: calc(100vh - 65px);
-                background: rgba(15, 23, 42, 0.98);
+                height: calc(100vh - 60px);
+                background: rgba(10, 15, 28, 0.98);
                 backdrop-filter: blur(15px);
                 flex-direction: column;
                 justify-content: center;
-                gap: 40px;
+                gap: 35px;
                 transition: left 0.4s ease;
                 border-top: 1px solid var(--glass-border);
             }
 
-            .nav-links.active {
-                left: 0; /* Slide in when active */
+            .nav-links.active { left: 0; }
+            .nav-links a { font-size: 1.3rem; font-weight: 600; }
+
+            /* Fix Hero sizing */
+            header { padding: 120px 20px 60px; }
+            .hero-title { font-size: 2.5rem; letter-spacing: -0.5px; }
+            .hero-subtitle { font-size: 0.95rem; margin-bottom: 30px; }
+            .cta-btn { padding: 14px 28px; font-size: 0.95rem; width: 100%; justify-content: center;}
+
+            section { padding: 60px 20px; }
+            .section-title { font-size: 2rem; }
+            .section-subtitle { font-size: 0.9rem; }
+
+            /* Clean Small Boxes for Mobile Grid */
+            .services-grid {
+                grid-template-columns: 1fr; 
+                gap: 15px; /* Very tight gap for clean stacking */
             }
 
-            .nav-links a {
-                font-size: 1.5rem;
+            .service-card {
+                padding: 20px 15px; /* Extremely compact padding */
+                border-radius: 12px;
+                flex-direction: row; /* Make items horizontal on mobile */
+                align-items: center;
+                gap: 15px;
             }
 
-            section {
-                padding: 80px 20px;
+            .icon-box {
+                margin-bottom: 0; /* Remove bottom margin for row layout */
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+                flex-shrink: 0;
             }
 
-            .hero-title {
-                font-size: 2.5rem;
-                margin-top: 40px;
+            .service-card h3 { font-size: 1.1rem; margin-bottom: 4px; }
+            .service-card p { display: none; } /* Hide description on mobile to save space */
+            .feature-list { display: none; } /* Hide lists on mobile to make boxes ultra-small */
+            
+            /* Show summary text instead for mobile */
+            .service-card::after {
+                content: 'Tap to view \2192';
+                font-size: 0.75rem;
+                color: var(--primary);
+                position: absolute;
+                right: 15px;
             }
 
-            .contact-container {
-                flex-direction: column;
-                padding: 30px 20px;
-                gap: 40px;
+            /* Adjust Review Cards for Mobile */
+            .review-card {
+                min-width: 280px; /* Smaller width for mobile peek effect */
+                padding: 20px;
+                border-radius: 12px;
             }
-
-            .ist-clock-container {
-                display: none; /* Hide clock on mobile to save header space */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .services-grid, .reviews-container {
-                grid-template-columns: 1fr; /* Stack into single column for very small screens */
-            }
+            .review-text { font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -489,12 +536,11 @@
     <nav>
         <div class="logo">Creative<span>Web</span></div>
         <div class="nav-right">
-            <div class="ist-clock-container">
-                <i class="fa-regular fa-clock"></i>
-                <span id="ist-time">Loading IST...</span>
+            <div class="ist-clock">
+                <i class="fa-regular fa-clock"></i> <span id="ist-time">Loading...</span>
             </div>
             <div class="mobile-menu-btn" id="menu-toggle">
-                <i class="fa-solid fa-bars"></i>
+                <i class="fa-solid fa-bars-staggered"></i>
             </div>
         </div>
         
@@ -507,192 +553,282 @@
     </nav>
 
     <header id="home">
-        <h1 class="hero-title">Premium Web Development<br>For Affordable Growth</h1>
-        <p class="hero-subtitle">We design and develop high-end websites, automated Telegram bots, and powerful social media growth tools tailored to your startup's needs.</p>
-        <a href="#contact" class="cta-btn">Start Your Project</a>
-        <div class="price-tag">Websites Starting at ₹359</div>
+        <div class="hero-badge">Starter Packages from ₹359</div>
+        <h1 class="hero-title">Premium Digital Growth,<br>Made Affordable.</h1>
+        <p class="hero-subtitle">We build high-end websites, develop automated Telegram logic, and engineer authentic social media growth for ambitious startups.</p>
+        <a href="#contact" class="cta-btn">Initialize Project <i class="fa-solid fa-arrow-right"></i></a>
     </header>
 
-    <section id="services" class="reveal">
-        <h2 class="section-title">Our Premium Services</h2>
+    <section id="services">
+        <div class="section-header reveal">
+            <h2 class="section-title">Our Capabilities</h2>
+            <p class="section-subtitle">Comprehensive digital solutions engineered for scale.</p>
+        </div>
+        
         <div class="services-grid">
-            <div class="service-card">
-                <i class="fa-solid fa-code service-icon"></i>
-                <h3>Website Creation</h3>
-                <p>Fully responsive, stunningly designed websites built for speed, SEO, and converting visitors into loyal customers.</p>
+            <div class="service-card reveal delay-1">
+                <div class="icon-box"><i class="fa-solid fa-laptop-code"></i></div>
+                <div>
+                    <h3>Website Creation</h3>
+                    <p>Stunning, ultra-fast, and fully responsive websites tailored to convert visitors into clients.</p>
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-check"></i> Premium UI/UX Design</li>
+                        <li><i class="fa-solid fa-check"></i> Mobile Responsive Ready</li>
+                        <li><i class="fa-solid fa-check"></i> SEO Optimized Structure</li>
+                    </ul>
+                </div>
             </div>
-            <div class="service-card">
-                <i class="fa-brands fa-telegram service-icon"></i>
-                <h3>Telegram Bots</h3>
-                <p>Automate your workflow. Custom coded Telegram bots for customer support, group management, and data handling.</p>
+
+            <div class="service-card reveal delay-2">
+                <div class="icon-box"><i class="fa-brands fa-telegram"></i></div>
+                <div>
+                    <h3>Telegram Bots</h3>
+                    <p>Automate community management and customer support with custom script logic.</p>
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-check"></i> Auto-Reply & Moderation</li>
+                        <li><i class="fa-solid fa-check"></i> Payment Integrations</li>
+                        <li><i class="fa-solid fa-check"></i> Custom API Fetching</li>
+                    </ul>
+                </div>
             </div>
-            <div class="service-card">
-                <i class="fa-brands fa-instagram service-icon"></i>
-                <h3>Social Media Boost</h3>
-                <p>Premium Instagram and Facebook services to authentically grow your followers, views, and brand engagement metrics.</p>
+
+            <div class="service-card social-ig reveal delay-3">
+                <div class="icon-box"><i class="fa-brands fa-instagram"></i></div>
+                <div>
+                    <h3>Instagram Growth</h3>
+                    <p>Algorithm-friendly boosts to increase your brand's visual authority and reach.</p>
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-check"></i> Real, Active Followers</li>
+                        <li><i class="fa-solid fa-check"></i> Reel Views & Likes</li>
+                        <li><i class="fa-solid fa-check"></i> Story Engagement</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card social-yt reveal delay-4">
+                <div class="icon-box"><i class="fa-brands fa-youtube"></i></div>
+                <div>
+                    <h3>YouTube Mastery</h3>
+                    <p>Accelerate your channel monetization and establish video dominance.</p>
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-check"></i> High-Retention Views</li>
+                        <li><i class="fa-solid fa-check"></i> Permanent Subscribers</li>
+                        <li><i class="fa-solid fa-check"></i> Watch-Time Hours</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card social-fb reveal delay-1">
+                <div class="icon-box"><i class="fa-brands fa-facebook-f"></i></div>
+                <div>
+                    <h3>Facebook Boost</h3>
+                    <p>Expand your page reach and foster community trust with social proof.</p>
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-check"></i> Page Followers & Likes</li>
+                        <li><i class="fa-solid fa-check"></i> Post/Video Engagement</li>
+                        <li><i class="fa-solid fa-check"></i> Targeted Group Joins</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="reviews" class="reveal">
-        <h2 class="section-title">Client Success Stories</h2>
-        <div class="reviews-container">
+    <section id="reviews">
+        <div class="section-header reveal">
+            <h2 class="section-title">Client Success</h2>
+            <p class="section-subtitle">Swipe to read what our partners say.</p>
+        </div>
+        
+        <div class="reviews-wrapper reveal delay-1">
             <div class="review-card">
                 <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p class="review-text">"The UI design they delivered for my startup was phenomenal. The ₹359 starting price is unbeatable for the premium quality you receive. Highly recommended!"</p>
+                <p class="review-text">"The mobile view they built for my eCommerce store is flawless. Starting at ₹359 is unbelievable for this level of premium UI. Conversions are up 40%."</p>
                 <div class="reviewer">
-                    <div class="reviewer-img">R</div>
+                    <div class="avatar" style="background: #ef4444;">R</div>
                     <div class="reviewer-info">
-                        <h4>Rahul Sharma</h4>
+                        <h4>Rahul S.</h4>
                         <span>E-commerce Founder</span>
                     </div>
                 </div>
             </div>
+            
+            <div class="review-card">
+                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p class="review-text">"Used their YouTube service to cross the monetization threshold. The subscribers stuck, and the watch time was completely organic-looking."</p>
+                <div class="reviewer">
+                    <div class="avatar" style="background: #8b5cf6;">A</div>
+                    <div class="reviewer-info">
+                        <h4>Amit Kumar</h4>
+                        <span>Content Creator</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="review-card">
                 <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
-                <p class="review-text">"Their Telegram bot automation saved my support team 20 hours a week. Smooth communication and perfect execution of the code."</p>
+                <p class="review-text">"Our custom Telegram bot handles 500+ customer queries a day automatically now. Saved us hiring another support staff member."</p>
                 <div class="reviewer">
-                    <div class="reviewer-img">A</div>
+                    <div class="avatar" style="background: #10b981;">N</div>
                     <div class="reviewer-info">
-                        <h4>Ananya Patel</h4>
+                        <h4>Neha Patel</h4>
                         <span>Tech Startup CEO</span>
                     </div>
                 </div>
             </div>
+
             <div class="review-card">
                 <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p class="review-text">"I used their Instagram growth service and saw real engagement within days. It perfectly complemented the new website they built for us."</p>
+                <p class="review-text">"The Instagram follower boost gave my new clothing brand the social proof it needed to start getting real sales. Fast delivery too."</p>
                 <div class="reviewer">
-                    <div class="reviewer-img">V</div>
+                    <div class="avatar" style="background: #f59e0b;">V</div>
                     <div class="reviewer-info">
-                        <h4>Vikram Singh</h4>
-                        <span>Digital Creator</span>
+                        <h4>Vikram M.</h4>
+                        <span>Apparel Brand</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="review-card">
+                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p class="review-text">"Clean code, beautiful animations, and they actually understand modern design trends. Best dev team I've hired."</p>
+                <div class="reviewer">
+                    <div class="avatar" style="background: #3b82f6;">S</div>
+                    <div class="reviewer-info">
+                        <h4>Sarah J.</h4>
+                        <span>Agency Owner</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="reveal">
-        <h2 class="section-title">Let's Work Together</h2>
-        <div class="contact-container">
+    <section id="contact">
+        <div class="section-header reveal">
+            <h2 class="section-title">Establish Connection</h2>
+        </div>
+        
+        <div class="contact-grid reveal delay-1">
             <div class="contact-info">
-                <h3>Get in Touch</h3>
-                <p>Ready to elevate your online presence? Fill out the form or reach out directly. We respond within 24 hours.</p>
+                <h3>Let's build something.</h3>
+                <p>Fill out the parameters below, and our team will get back to you within 24 hours.</p>
                 
-                <div class="info-item">
+                <div class="info-box">
                     <i class="fa-solid fa-phone"></i>
-                    <span>+91 963 390 2730</span>
+                    <div>
+                        <h4>Direct Line</h4>
+                        <span>+91 963 390 2730</span>
+                    </div>
                 </div>
-                <div class="info-item">
-                    <i class="fa-solid fa-globe"></i>
-                    <span>www.website.com</span>
-                </div>
-                <div class="info-item">
+                <div class="info-box">
                     <i class="fa-solid fa-envelope"></i>
-                    <span>hello@creativewebsites.com</span>
+                    <div>
+                        <h4>Email Network</h4>
+                        <span>hello@creativeweb.com</span>
+                    </div>
                 </div>
             </div>
 
-            <form class="contact-form" id="premiumForm">
-                <div class="input-group">
-                    <input type="text" placeholder="Full Name" required>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Your Name" required>
                 </div>
-                <div class="input-group">
-                    <input type="email" placeholder="Email Address" required>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Email Address" required>
                 </div>
-                <div class="input-group">
-                    <input type="text" placeholder="Service Needed (Website, Bot, etc.)" required>
+                <div class="form-group">
+                    <select class="form-control" style="appearance: none; background-color: rgba(0,0,0,0.5);" required>
+                        <option value="" disabled selected>Select Service...</option>
+                        <option value="web">Website Development</option>
+                        <option value="bot">Telegram Bot</option>
+                        <option value="ig">Instagram Growth</option>
+                        <option value="yt">YouTube Services</option>
+                        <option value="fb">Facebook Services</option>
+                    </select>
                 </div>
-                <div class="input-group">
-                    <textarea placeholder="Tell us about your project details..." required></textarea>
+                <div class="form-group">
+                    <textarea class="form-control" placeholder="Project Details..." required></textarea>
                 </div>
-                <button type="submit" class="submit-btn" id="submitBtn">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+                <button type="submit" class="submit-btn" id="submitBtn">Send Request <i class="fa-solid fa-paper-plane"></i></button>
             </form>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 Creative Website Development. Built for Premium Performance.</p>
+        <p>&copy; 2024 Creative Web Development. Engineered for Growth.</p>
     </footer>
 
     <script>
-        // 1. Mobile Menu Toggle Logic
-        const menuToggle = document.getElementById('menu-toggle');
+        // 1. Mobile Menu Logic
+        const menuBtn = document.getElementById('menu-toggle');
         const navMenu = document.getElementById('nav-menu');
         const navLinks = document.querySelectorAll('.nav-links a');
+        const menuIcon = menuBtn.querySelector('i');
 
-        menuToggle.addEventListener('click', () => {
+        menuBtn.addEventListener('click', () => {
             navMenu.classList.toggle('active');
-            // Change icon from bars to X
-            const icon = menuToggle.querySelector('i');
             if(navMenu.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-xmark');
+                menuIcon.classList.remove('fa-bars-staggered');
+                menuIcon.classList.add('fa-xmark');
             } else {
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars-staggered');
             }
         });
 
-        // Close mobile menu when a link is clicked
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
-                menuToggle.querySelector('i').classList.remove('fa-xmark');
-                menuToggle.querySelector('i').classList.add('fa-bars');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars-staggered');
             });
         });
 
-        // 2. Live Indian Standard Time (IST) Clock
+        // 2. Real-time IST Clock
         function updateClock() {
             const now = new Date();
-            const options = { 
-                timeZone: 'Asia/Kolkata', 
-                hour: '2-digit', 
-                minute: '2-digit', 
-                second: '2-digit', 
-                hour12: true 
-            };
-            const timeString = now.toLocaleTimeString('en-US', options);
-            document.getElementById('ist-time').textContent = 'IST: ' + timeString;
+            const options = { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hour12: true };
+            document.getElementById('ist-time').textContent = now.toLocaleTimeString('en-US', options) + ' IST';
         }
-        
         setInterval(updateClock, 1000);
-        updateClock(); 
+        updateClock();
 
-        // 3. Scroll Reveal Animation Logic
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
+        // 3. Smooth Scroll Reveal Animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
 
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Stop observing once revealed
                 }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        reveal(); 
+            });
+        }, observerOptions);
 
-        // 4. Frontend Form Submission Handling
-        document.getElementById('premiumForm').addEventListener('submit', function(e) {
+        document.querySelectorAll('.reveal').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // 4. Form Submit Simulation
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault(); 
             const btn = document.getElementById('submitBtn');
             const originalText = btn.innerHTML;
             
-            btn.innerHTML = 'Sending... <i class="fa-solid fa-spinner fa-spin"></i>';
-            btn.style.background = '#10b981'; 
+            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Processing...';
+            btn.style.background = '#8b5cf6'; 
             
             setTimeout(() => {
-                btn.innerHTML = 'Message Sent! <i class="fa-solid fa-check"></i>';
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> Request Sent';
+                btn.style.background = '#10b981';
                 this.reset(); 
                 
                 setTimeout(() => {
                     btn.innerHTML = originalText;
-                    btn.style.background = 'var(--accent-primary)';
+                    btn.style.background = 'var(--primary)';
                 }, 3000);
             }, 1500);
         });
