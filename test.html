@@ -11,15 +11,16 @@
     <style>
         /* --- Premium Theme Variables --- */
         :root {
-            --bg-dark: #0a0f1c;
-            --bg-card: rgba(20, 27, 45, 0.6);
+            --bg-dark: #050814;
+            --bg-card: rgba(13, 17, 33, 0.7);
             --text-light: #f8fafc;
             --text-dim: #94a3b8;
             --primary: #3b82f6;
-            --primary-glow: rgba(59, 130, 246, 0.4);
+            --primary-glow: rgba(59, 130, 246, 0.5);
             --secondary: #8b5cf6;
             --glass-border: rgba(255, 255, 255, 0.08);
             --success: #10b981;
+            --wa-color: #25D366;
         }
 
         * {
@@ -34,10 +35,9 @@
             background-color: var(--bg-dark);
             color: var(--text-light);
             overflow-x: hidden;
-            /* Animated subtle gradient background */
             background-image: 
-                radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.15), transparent 40%),
-                radial-gradient(circle at 100% 100%, rgba(139, 92, 246, 0.12), transparent 40%);
+                radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.1), transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.1), transparent 40%);
             background-attachment: fixed;
         }
 
@@ -50,29 +50,24 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(10, 15, 28, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(5, 8, 20, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--glass-border);
             z-index: 1000;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 800;
             color: #fff;
             letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
         }
-
         .logo span { color: var(--primary); }
 
         .nav-links {
             display: flex;
-            gap: 25px;
-            align-items: center;
+            gap: 30px;
         }
 
         .nav-links a {
@@ -82,33 +77,11 @@
             font-size: 0.95rem;
             transition: color 0.3s;
         }
-
         .nav-links a:hover { color: var(--primary); }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .ist-clock {
-            background: var(--bg-card);
-            padding: 6px 12px;
-            border-radius: 6px;
-            border: 1px solid var(--glass-border);
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--text-dim);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .ist-clock i { color: var(--primary); }
 
         .mobile-menu-btn {
             display: none;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: #fff;
             cursor: pointer;
             z-index: 1001;
@@ -123,26 +96,30 @@
             align-items: center;
             text-align: center;
             padding: 100px 5% 50px;
+            position: relative;
         }
 
         .hero-badge {
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--primary);
-            padding: 6px 16px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            padding: 8px 20px;
             border-radius: 50px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 20px;
-            border: 1px solid rgba(59, 130, 246, 0.2);
+            margin-bottom: 25px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
             animation: fadeInDown 0.8s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .hero-title {
             font-size: 4.5rem;
             font-weight: 800;
             line-height: 1.1;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: -1.5px;
@@ -150,13 +127,12 @@
         }
 
         .hero-subtitle {
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             color: var(--text-dim);
-            max-width: 600px;
+            max-width: 650px;
             margin-bottom: 40px;
             line-height: 1.6;
             animation: fadeInUp 0.8s ease 0.4s both;
-            font-weight: 400;
         }
 
         .cta-btn {
@@ -164,7 +140,7 @@
             align-items: center;
             gap: 10px;
             padding: 16px 36px;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: #fff;
             background: linear-gradient(135deg, var(--primary), #2563eb);
@@ -176,16 +152,23 @@
             transition: all 0.3s ease;
             animation: fadeInUp 0.8s ease 0.6s both;
         }
-
         .cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px var(--primary-glow);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px var(--primary-glow);
+        }
+        
+        .cta-btn.whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+        }
+        .cta-btn.whatsapp:hover {
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.6);
         }
 
-        /* --- Global Section Styles --- */
+        /* --- Sections General --- */
         section {
             padding: 100px 5%;
-            max-width: 1200px;
+            max-width: 1250px;
             margin: 0 auto;
         }
 
@@ -195,339 +178,317 @@
         }
 
         .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 2.8rem;
+            font-weight: 800;
             color: #fff;
-            letter-spacing: -0.5px;
-            margin-bottom: 10px;
+            letter-spacing: -1px;
+            margin-bottom: 15px;
         }
 
         .section-subtitle {
             color: var(--text-dim);
-            font-size: 1.05rem;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        /* --- Services Grid (Compact & Clean) --- */
+        /* --- Fixed Services Grid (Works perfect on Mobile & Desktop) --- */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px; /* Tighter gap for cleaner look */
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
         }
 
         .service-card {
             background: var(--bg-card);
             border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 30px 25px; /* Compact padding */
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            border-radius: 20px;
+            padding: 35px 30px;
+            transition: all 0.4s ease;
             position: relative;
+            z-index: 1;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            text-align: left;
         }
-
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.1), transparent);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
         .service-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
             border-color: var(--primary);
-            background: rgba(30, 41, 59, 0.8);
         }
+        .service-card:hover::before { opacity: 1; }
 
         .icon-box {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background: rgba(59, 130, 246, 0.1);
-            border-radius: 12px;
+            border-radius: 14px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: var(--primary);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            animation: float 6s ease-in-out infinite;
         }
 
-        .service-card.social-ig .icon-box { color: #e1306c; background: rgba(225, 48, 108, 0.1); }
-        .service-card.social-fb .icon-box { color: #1877f2; background: rgba(24, 119, 242, 0.1); }
-        .service-card.social-yt .icon-box { color: #ff0000; background: rgba(255, 0, 0, 0.1); }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
 
         .service-card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 10px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
             color: #fff;
         }
 
         .service-card p {
             color: var(--text-dim);
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 15px;
-            flex-grow: 1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
         }
 
-        .feature-list {
-            list-style: none;
-            width: 100%;
-        }
-
+        .feature-list { list-style: none; }
         .feature-list li {
-            font-size: 0.85rem;
-            color: #e2e8f0;
-            margin-bottom: 6px;
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
+        .feature-list li i { color: var(--success); font-size: 0.8rem; }
 
-        .feature-list li i {
-            color: var(--success);
-            font-size: 0.75rem;
-        }
-
-        /* --- Swipeable Reviews Section --- */
-        .reviews-wrapper {
-            /* Creates a swipeable horizontal scroll on mobile */
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            gap: 20px;
-            padding-bottom: 20px;
-            scrollbar-width: none; /* Firefox */
+        /* --- Pricing / Offer Section --- */
+        #pricing {
+            background: linear-gradient(180deg, transparent, rgba(59, 130, 246, 0.05), transparent);
         }
         
-        .reviews-wrapper::-webkit-scrollbar {
-            display: none; /* Chrome/Safari */
+        .pricing-card {
+            background: linear-gradient(145deg, rgba(20, 27, 45, 0.9), rgba(10, 15, 28, 0.9));
+            border: 1px solid var(--primary);
+            border-radius: 24px;
+            padding: 50px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(59, 130, 246, 0.2) inset;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-tag {
+            background: var(--primary);
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .price-amount {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .price-amount span { font-size: 1.5rem; color: var(--text-dim); font-weight: 500; }
+
+        .pricing-card p {
+            color: var(--text-dim);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        /* --- Revamped Reviews Grid --- */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
         }
 
         .review-card {
-            min-width: 320px;
-            background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            background: var(--bg-card);
             border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 25px;
-            scroll-snap-align: start;
-            flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
+            border-radius: 20px;
+            padding: 35px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        .review-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            font-size: 3rem;
+            color: rgba(255,255,255,0.03);
         }
 
         .stars {
             color: #fbbf24;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
             letter-spacing: 2px;
         }
 
         .review-text {
-            color: var(--text-light);
-            font-size: 0.95rem;
+            color: #e2e8f0;
+            font-size: 1.05rem;
             line-height: 1.6;
-            margin-bottom: 20px;
-            flex-grow: 1;
+            margin-bottom: 25px;
+            font-style: italic;
         }
 
         .reviewer {
             display: flex;
             align-items: center;
-            gap: 12px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 15px;
+            gap: 15px;
         }
 
         .avatar {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            background: var(--primary);
             display: flex;
             justify-content: center;
             align-items: center;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 1.2rem;
+            color: #fff;
         }
 
-        .reviewer-info h4 { font-size: 0.95rem; font-weight: 600; }
-        .reviewer-info span { font-size: 0.8rem; color: var(--text-dim); }
+        .reviewer-info h4 { font-size: 1rem; font-weight: 700; color: #fff;}
+        .reviewer-info span { font-size: 0.85rem; color: var(--text-dim); }
 
-        /* --- Contact Section --- */
+        /* --- Contact Form --- */
         .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 40px;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
             background: var(--bg-card);
             border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 40px;
+            border-radius: 24px;
+            padding: 50px;
         }
 
-        .contact-info h3 { font-size: 1.8rem; margin-bottom: 10px; }
-        .contact-info p { color: var(--text-dim); margin-bottom: 30px; font-size: 0.95rem; }
-
-        .info-box {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            background: rgba(0,0,0,0.2);
-            padding: 15px;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.02);
-        }
-
-        .info-box i { font-size: 1.2rem; color: var(--primary); }
-        .info-box div h4 { font-size: 0.9rem; color: var(--text-dim); font-weight: 400; margin-bottom: 2px; }
-        .info-box div span { font-size: 1rem; font-weight: 500; }
-
-        .form-group { margin-bottom: 15px; }
+        .contact-info h3 { font-size: 2rem; margin-bottom: 15px; color: #fff;}
+        .contact-info p { color: var(--text-dim); margin-bottom: 40px; font-size: 1.05rem; line-height: 1.6;}
 
         .form-control {
             width: 100%;
-            padding: 14px 18px;
-            background: rgba(0,0,0,0.3);
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            background: rgba(0,0,0,0.4);
             border: 1px solid var(--glass-border);
-            border-radius: 10px;
+            border-radius: 12px;
             color: #fff;
-            font-size: 0.95rem;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-
-        .form-control:focus {
-            border-color: var(--primary);
-            background: rgba(0,0,0,0.5);
-        }
-
-        textarea.form-control { height: 120px; resize: none; }
-
-        .submit-btn {
-            width: 100%;
-            background: var(--primary);
-            color: #fff;
-            border: none;
-            padding: 15px;
-            border-radius: 10px;
             font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s;
+            outline: none;
+            transition: border-color 0.3s;
         }
-
-        .submit-btn:hover { background: #2563eb; }
+        .form-control:focus { border-color: var(--primary); }
+        textarea.form-control { height: 140px; resize: none; }
 
         footer {
             text-align: center;
             padding: 30px;
             border-top: 1px solid var(--glass-border);
             color: var(--text-dim);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
 
-        /* --- Scroll Reveal Animations --- */
+        /* --- Scroll Animations --- */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
-        
-        /* Staggered delays for cards */
-        .delay-1 { transition-delay: 0.1s; }
-        .delay-2 { transition-delay: 0.2s; }
-        .delay-3 { transition-delay: 0.3s; }
-        .delay-4 { transition-delay: 0.4s; }
 
         /* ====================================================
-           MOBILE RESPONSIVE FIXES (CLEAN & COMPACT BOXES)
+           MOBILE RESPONSIVE FIXES (WORKS PERFECTLY NOW)
            ==================================================== */
         @media (max-width: 900px) {
-            .contact-grid {
-                grid-template-columns: 1fr;
-                padding: 25px;
-                gap: 30px;
-            }
+            .contact-grid { grid-template-columns: 1fr; padding: 30px; }
+            .hero-title { font-size: 3.5rem; }
+            .section-title { font-size: 2.2rem; }
         }
 
         @media (max-width: 768px) {
             nav { padding: 15px 20px; }
             .mobile-menu-btn { display: block; }
-            .ist-clock { display: none; } /* Hide clock on mobile to save space */
 
             .nav-links {
                 position: fixed;
-                top: 60px;
+                top: 70px;
                 left: -100%;
                 width: 100%;
-                height: calc(100vh - 60px);
-                background: rgba(10, 15, 28, 0.98);
-                backdrop-filter: blur(15px);
+                height: calc(100vh - 70px);
+                background: rgba(5, 8, 20, 0.98);
+                backdrop-filter: blur(20px);
                 flex-direction: column;
                 justify-content: center;
-                gap: 35px;
+                align-items: center;
+                gap: 40px;
                 transition: left 0.4s ease;
                 border-top: 1px solid var(--glass-border);
             }
 
             .nav-links.active { left: 0; }
-            .nav-links a { font-size: 1.3rem; font-weight: 600; }
+            .nav-links a { font-size: 1.5rem; font-weight: 600; }
 
-            /* Fix Hero sizing */
-            header { padding: 120px 20px 60px; }
-            .hero-title { font-size: 2.5rem; letter-spacing: -0.5px; }
-            .hero-subtitle { font-size: 0.95rem; margin-bottom: 30px; }
-            .cta-btn { padding: 14px 28px; font-size: 0.95rem; width: 100%; justify-content: center;}
+            header { padding: 130px 20px 60px; }
+            .hero-title { font-size: 2.8rem; }
+            .hero-subtitle { font-size: 1rem; margin-bottom: 30px; }
+            
+            /* Mobile Buttons Stack */
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                width: 100%;
+            }
+            .cta-btn { width: 100%; justify-content: center; font-size: 1rem; padding: 15px; }
 
-            section { padding: 60px 20px; }
-            .section-title { font-size: 2rem; }
-            .section-subtitle { font-size: 0.9rem; }
-
-            /* Clean Small Boxes for Mobile Grid */
-            .services-grid {
+            section { padding: 70px 20px; }
+            
+            /* Fixed Services & Reviews Grid for Mobile */
+            .services-grid, .reviews-grid {
                 grid-template-columns: 1fr; 
-                gap: 15px; /* Very tight gap for clean stacking */
+                gap: 20px;
             }
 
             .service-card {
-                padding: 20px 15px; /* Extremely compact padding */
-                border-radius: 12px;
-                flex-direction: row; /* Make items horizontal on mobile */
-                align-items: center;
-                gap: 15px;
+                padding: 25px; /* Comfortable padding for mobile */
             }
 
             .icon-box {
-                margin-bottom: 0; /* Remove bottom margin for row layout */
-                width: 45px;
-                height: 45px;
-                font-size: 1.2rem;
-                flex-shrink: 0;
+                width: 50px; height: 50px; font-size: 1.5rem; margin-bottom: 20px;
             }
 
-            .service-card h3 { font-size: 1.1rem; margin-bottom: 4px; }
-            .service-card p { display: none; } /* Hide description on mobile to save space */
-            .feature-list { display: none; } /* Hide lists on mobile to make boxes ultra-small */
-            
-            /* Show summary text instead for mobile */
-            .service-card::after {
-                content: 'Tap to view \2192';
-                font-size: 0.75rem;
-                color: var(--primary);
-                position: absolute;
-                right: 15px;
-            }
-
-            /* Adjust Review Cards for Mobile */
-            .review-card {
-                min-width: 280px; /* Smaller width for mobile peek effect */
-                padding: 20px;
-                border-radius: 12px;
-            }
-            .review-text { font-size: 0.85rem; }
+            /* Pricing Card Mobile */
+            .pricing-card { padding: 30px 20px; border-radius: 20px;}
+            .price-amount { font-size: 3.5rem; }
         }
     </style>
 </head>
@@ -535,116 +496,115 @@
 
     <nav>
         <div class="logo">Creative<span>Web</span></div>
-        <div class="nav-right">
-            <div class="ist-clock">
-                <i class="fa-regular fa-clock"></i> <span id="ist-time">Loading...</span>
-            </div>
-            <div class="mobile-menu-btn" id="menu-toggle">
-                <i class="fa-solid fa-bars-staggered"></i>
-            </div>
-        </div>
         
         <div class="nav-links" id="nav-menu">
             <a href="#home">Home</a>
             <a href="#services">Services</a>
+            <a href="#pricing">Pricing</a>
             <a href="#reviews">Reviews</a>
             <a href="#contact">Contact</a>
+        </div>
+
+        <div class="mobile-menu-btn" id="menu-toggle">
+            <i class="fa-solid fa-bars-staggered"></i>
         </div>
     </nav>
 
     <header id="home">
-        <div class="hero-badge">Starter Packages from ₹359</div>
+        <div class="hero-badge"><i class="fa-solid fa-bolt"></i> Fast Delivery Guaranteed</div>
         <h1 class="hero-title">Premium Digital Growth,<br>Made Affordable.</h1>
         <p class="hero-subtitle">We build high-end websites, develop automated Telegram logic, and engineer authentic social media growth for ambitious startups.</p>
-        <a href="#contact" class="cta-btn">Initialize Project <i class="fa-solid fa-arrow-right"></i></a>
+        
+        <div class="hero-buttons">
+            <a href="https://wa.me/+919633902730?text=*Hi,+I'd+like+to+get+a+website+created.+Can+you+share+your+pricing+and+portfolio?*" target="_blank" class="cta-btn whatsapp">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp Us Now
+            </a>
+            <a href="#pricing" class="cta-btn" style="background: rgba(255,255,255,0.1); box-shadow: none; border: 1px solid rgba(255,255,255,0.2);">
+                View Packages
+            </a>
+        </div>
     </header>
 
     <section id="services">
         <div class="section-header reveal">
-            <h2 class="section-title">Our Capabilities</h2>
-            <p class="section-subtitle">Comprehensive digital solutions engineered for scale.</p>
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Comprehensive digital solutions engineered for scale. Everything you need in one place.</p>
         </div>
         
         <div class="services-grid">
-            <div class="service-card reveal delay-1">
+            <div class="service-card reveal">
                 <div class="icon-box"><i class="fa-solid fa-laptop-code"></i></div>
-                <div>
-                    <h3>Website Creation</h3>
-                    <p>Stunning, ultra-fast, and fully responsive websites tailored to convert visitors into clients.</p>
-                    <ul class="feature-list">
-                        <li><i class="fa-solid fa-check"></i> Premium UI/UX Design</li>
-                        <li><i class="fa-solid fa-check"></i> Mobile Responsive Ready</li>
-                        <li><i class="fa-solid fa-check"></i> SEO Optimized Structure</li>
-                    </ul>
-                </div>
+                <h3>Website Creation</h3>
+                <p>Stunning, ultra-fast, and fully responsive websites tailored to convert visitors into clients.</p>
+                <ul class="feature-list">
+                    <li><i class="fa-solid fa-check"></i> Premium UI/UX Design</li>
+                    <li><i class="fa-solid fa-check"></i> Mobile Responsive Ready</li>
+                    <li><i class="fa-solid fa-check"></i> SEO Optimized Structure</li>
+                </ul>
             </div>
 
-            <div class="service-card reveal delay-2">
-                <div class="icon-box"><i class="fa-brands fa-telegram"></i></div>
-                <div>
-                    <h3>Telegram Bots</h3>
-                    <p>Automate community management and customer support with custom script logic.</p>
-                    <ul class="feature-list">
-                        <li><i class="fa-solid fa-check"></i> Auto-Reply & Moderation</li>
-                        <li><i class="fa-solid fa-check"></i> Payment Integrations</li>
-                        <li><i class="fa-solid fa-check"></i> Custom API Fetching</li>
-                    </ul>
-                </div>
+            <div class="service-card reveal" style="transition-delay: 0.1s;">
+                <div class="icon-box" style="color: #0088cc; background: rgba(0, 136, 204, 0.1);"><i class="fa-brands fa-telegram"></i></div>
+                <h3>Telegram Bots</h3>
+                <p>Automate community management and customer support with custom script logic.</p>
+                <ul class="feature-list">
+                    <li><i class="fa-solid fa-check"></i> Auto-Reply & Moderation</li>
+                    <li><i class="fa-solid fa-check"></i> Payment Integrations</li>
+                    <li><i class="fa-solid fa-check"></i> Custom API Fetching</li>
+                </ul>
             </div>
 
-            <div class="service-card social-ig reveal delay-3">
-                <div class="icon-box"><i class="fa-brands fa-instagram"></i></div>
-                <div>
-                    <h3>Instagram Growth</h3>
-                    <p>Algorithm-friendly boosts to increase your brand's visual authority and reach.</p>
-                    <ul class="feature-list">
-                        <li><i class="fa-solid fa-check"></i> Real, Active Followers</li>
-                        <li><i class="fa-solid fa-check"></i> Reel Views & Likes</li>
-                        <li><i class="fa-solid fa-check"></i> Story Engagement</li>
-                    </ul>
-                </div>
+            <div class="service-card reveal" style="transition-delay: 0.2s;">
+                <div class="icon-box" style="color: #e1306c; background: rgba(225, 48, 108, 0.1);"><i class="fa-brands fa-instagram"></i></div>
+                <h3>Social Media Boost</h3>
+                <p>Algorithm-friendly boosts for Instagram, Facebook, and YouTube to increase authority.</p>
+                <ul class="feature-list">
+                    <li><i class="fa-solid fa-check"></i> Real Followers & Subscribers</li>
+                    <li><i class="fa-solid fa-check"></i> High-Retention Views & Likes</li>
+                    <li><i class="fa-solid fa-check"></i> Targeted Group Engagement</li>
+                </ul>
             </div>
+        </div>
+    </section>
 
-            <div class="service-card social-yt reveal delay-4">
-                <div class="icon-box"><i class="fa-brands fa-youtube"></i></div>
-                <div>
-                    <h3>YouTube Mastery</h3>
-                    <p>Accelerate your channel monetization and establish video dominance.</p>
-                    <ul class="feature-list">
-                        <li><i class="fa-solid fa-check"></i> High-Retention Views</li>
-                        <li><i class="fa-solid fa-check"></i> Permanent Subscribers</li>
-                        <li><i class="fa-solid fa-check"></i> Watch-Time Hours</li>
-                    </ul>
-                </div>
-            </div>
+    <section id="pricing">
+        <div class="section-header reveal">
+            <h2 class="section-title">Special Offer</h2>
+            <p class="section-subtitle">Get your startup online today with our highly affordable premium tier.</p>
+        </div>
 
-            <div class="service-card social-fb reveal delay-1">
-                <div class="icon-box"><i class="fa-brands fa-facebook-f"></i></div>
-                <div>
-                    <h3>Facebook Boost</h3>
-                    <p>Expand your page reach and foster community trust with social proof.</p>
-                    <ul class="feature-list">
-                        <li><i class="fa-solid fa-check"></i> Page Followers & Likes</li>
-                        <li><i class="fa-solid fa-check"></i> Post/Video Engagement</li>
-                        <li><i class="fa-solid fa-check"></i> Targeted Group Joins</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="pricing-card reveal">
+            <div class="pricing-tag">Starter Package</div>
+            <div class="price-amount">₹359<span>/only</span></div>
+            <p>Perfect for portfolios, landing pages, and new startups looking for a professional digital presence.</p>
+            
+            <ul class="feature-list" style="text-align: left; max-width: 300px; margin: 0 auto 30px auto;">
+                <li><i class="fa-solid fa-circle-check" style="color: var(--primary);"></i> Single Page Premium UI</li>
+                <li><i class="fa-solid fa-circle-check" style="color: var(--primary);"></i> Mobile Perfect Design</li>
+                <li><i class="fa-solid fa-circle-check" style="color: var(--primary);"></i> Smooth Animations</li>
+                <li><i class="fa-solid fa-circle-check" style="color: var(--primary);"></i> Contact Form Setup</li>
+                <li><i class="fa-solid fa-circle-check" style="color: var(--primary);"></i> Fast Delivery</li>
+            </ul>
+
+            <a href="https://wa.me/+919633902730?text=*Hi,+I'd+like+to+get+a+website+created.+Can+you+share+your+pricing+and+portfolio?*" target="_blank" class="cta-btn whatsapp" style="width: 100%; justify-content: center;">
+                <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> Buy Now on WhatsApp
+            </a>
         </div>
     </section>
 
     <section id="reviews">
         <div class="section-header reveal">
             <h2 class="section-title">Client Success</h2>
-            <p class="section-subtitle">Swipe to read what our partners say.</p>
+            <p class="section-subtitle">Real results from founders, creators, and businesses who trusted us.</p>
         </div>
         
-        <div class="reviews-wrapper reveal delay-1">
-            <div class="review-card">
+        <div class="reviews-grid">
+            <div class="review-card reveal">
+                <i class="fa-solid fa-quote-right quote-icon"></i>
                 <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p class="review-text">"The mobile view they built for my eCommerce store is flawless. Starting at ₹359 is unbelievable for this level of premium UI. Conversions are up 40%."</p>
+                <p class="review-text">"The mobile view they built for my eCommerce store is absolutely flawless. Starting at ₹359 is unbelievable for this level of premium UI. Conversions are up."</p>
                 <div class="reviewer">
-                    <div class="avatar" style="background: #ef4444;">R</div>
+                    <div class="avatar" style="background: linear-gradient(135deg, #ef4444, #b91c1c);">R</div>
                     <div class="reviewer-info">
                         <h4>Rahul S.</h4>
                         <span>E-commerce Founder</span>
@@ -652,11 +612,12 @@
                 </div>
             </div>
             
-            <div class="review-card">
+            <div class="review-card reveal" style="transition-delay: 0.1s;">
+                <i class="fa-solid fa-quote-right quote-icon"></i>
                 <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
                 <p class="review-text">"Used their YouTube service to cross the monetization threshold. The subscribers stuck, and the watch time was completely organic-looking."</p>
                 <div class="reviewer">
-                    <div class="avatar" style="background: #8b5cf6;">A</div>
+                    <div class="avatar" style="background: linear-gradient(135deg, #8b5cf6, #6d28d9);">A</div>
                     <div class="reviewer-info">
                         <h4>Amit Kumar</h4>
                         <span>Content Creator</span>
@@ -664,38 +625,15 @@
                 </div>
             </div>
 
-            <div class="review-card">
+            <div class="review-card reveal" style="transition-delay: 0.2s;">
+                <i class="fa-solid fa-quote-right quote-icon"></i>
                 <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
-                <p class="review-text">"Our custom Telegram bot handles 500+ customer queries a day automatically now. Saved us hiring another support staff member."</p>
+                <p class="review-text">"Our custom Telegram bot handles 500+ customer queries a day automatically now. It saved us from having to hire another support staff member."</p>
                 <div class="reviewer">
-                    <div class="avatar" style="background: #10b981;">N</div>
+                    <div class="avatar" style="background: linear-gradient(135deg, #10b981, #047857);">N</div>
                     <div class="reviewer-info">
                         <h4>Neha Patel</h4>
                         <span>Tech Startup CEO</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="review-card">
-                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p class="review-text">"The Instagram follower boost gave my new clothing brand the social proof it needed to start getting real sales. Fast delivery too."</p>
-                <div class="reviewer">
-                    <div class="avatar" style="background: #f59e0b;">V</div>
-                    <div class="reviewer-info">
-                        <h4>Vikram M.</h4>
-                        <span>Apparel Brand</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="review-card">
-                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p class="review-text">"Clean code, beautiful animations, and they actually understand modern design trends. Best dev team I've hired."</p>
-                <div class="reviewer">
-                    <div class="avatar" style="background: #3b82f6;">S</div>
-                    <div class="reviewer-info">
-                        <h4>Sarah J.</h4>
-                        <span>Agency Owner</span>
                     </div>
                 </div>
             </div>
@@ -703,62 +641,38 @@
     </section>
 
     <section id="contact">
-        <div class="section-header reveal">
-            <h2 class="section-title">Establish Connection</h2>
-        </div>
-        
-        <div class="contact-grid reveal delay-1">
+        <div class="contact-grid reveal">
             <div class="contact-info">
                 <h3>Let's build something.</h3>
-                <p>Fill out the parameters below, and our team will get back to you within 24 hours.</p>
+                <p>Prefer email over WhatsApp? Fill out the parameters below, and our team will execute your request within 24 hours.</p>
                 
-                <div class="info-box">
-                    <i class="fa-solid fa-phone"></i>
-                    <div>
-                        <h4>Direct Line</h4>
-                        <span>+91 963 390 2730</span>
+                <div style="margin-top: 30px;">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <i class="fa-solid fa-envelope" style="color: var(--primary); font-size: 1.5rem;"></i>
+                        <span style="font-size: 1.1rem;">hello@creativeweb.com</span>
                     </div>
-                </div>
-                <div class="info-box">
-                    <i class="fa-solid fa-envelope"></i>
-                    <div>
-                        <h4>Email Network</h4>
-                        <span>hello@creativeweb.com</span>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <i class="fa-solid fa-phone" style="color: var(--primary); font-size: 1.5rem;"></i>
+                        <span style="font-size: 1.1rem;">+91 963 390 2730</span>
                     </div>
                 </div>
             </div>
 
-            <form class="contact-form" id="contactForm">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Email Address" required>
-                </div>
-                <div class="form-group">
-                    <select class="form-control" style="appearance: none; background-color: rgba(0,0,0,0.5);" required>
-                        <option value="" disabled selected>Select Service...</option>
-                        <option value="web">Website Development</option>
-                        <option value="bot">Telegram Bot</option>
-                        <option value="ig">Instagram Growth</option>
-                        <option value="yt">YouTube Services</option>
-                        <option value="fb">Facebook Services</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" placeholder="Project Details..." required></textarea>
-                </div>
-                <button type="submit" class="submit-btn" id="submitBtn">Send Request <i class="fa-solid fa-paper-plane"></i></button>
+            <form id="contactForm">
+                <input type="text" class="form-control" placeholder="Full Name" required>
+                <input type="email" class="form-control" placeholder="Email Address" required>
+                <textarea class="form-control" placeholder="Project Details..." required></textarea>
+                <button type="submit" class="cta-btn" id="submitBtn" style="width: 100%; justify-content: center;">Send Message <i class="fa-solid fa-paper-plane"></i></button>
             </form>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 Creative Web Development. Engineered for Growth.</p>
+        <p>&copy; 2024 Creative Web. Engineered for Growth.</p>
     </footer>
 
     <script>
-        // 1. Mobile Menu Logic
+        // Mobile Menu Logic
         const menuBtn = document.getElementById('menu-toggle');
         const navMenu = document.getElementById('nav-menu');
         const navLinks = document.querySelectorAll('.nav-links a');
@@ -783,27 +697,13 @@
             });
         });
 
-        // 2. Real-time IST Clock
-        function updateClock() {
-            const now = new Date();
-            const options = { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hour12: true };
-            document.getElementById('ist-time').textContent = now.toLocaleTimeString('en-US', options) + ' IST';
-        }
-        setInterval(updateClock, 1000);
-        updateClock();
-
-        // 3. Smooth Scroll Reveal Animation
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15
-        };
-
+        // Smooth Scroll Reveal Animation
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    observer.unobserve(entry.target); // Stop observing once revealed
+                    observer.unobserve(entry.target); 
                 }
             });
         }, observerOptions);
@@ -812,14 +712,13 @@
             observer.observe(el);
         });
 
-        // 4. Form Submit Simulation
+        // Form Submit Simulation
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault(); 
             const btn = document.getElementById('submitBtn');
             const originalText = btn.innerHTML;
             
             btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Processing...';
-            btn.style.background = '#8b5cf6'; 
             
             setTimeout(() => {
                 btn.innerHTML = '<i class="fa-solid fa-check"></i> Request Sent';
@@ -828,7 +727,7 @@
                 
                 setTimeout(() => {
                     btn.innerHTML = originalText;
-                    btn.style.background = 'var(--primary)';
+                    btn.style.background = 'linear-gradient(135deg, var(--primary), #2563eb)';
                 }, 3000);
             }, 1500);
         });
