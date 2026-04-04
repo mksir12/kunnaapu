@@ -3,889 +3,600 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Website Deloping - Premium Affordable Services</title>
+    <title>Creative Website Development</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+        /* CSS Variables for Premium Dark Theme */
         :root {
-            --bg-color: #0a1020;
-            --text-color: #ffffff;
-            --sub-text-color: #a0aec0;
-            --primary-accent: #1a73e8;
-            --secondary-accent: #1952a1;
-            --card-bg: #111a2f;
-            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            --section-padding: 100px 0;
-            --container-width: 1200px;
+            --bg-color: #0f172a;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-primary: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.5);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
             background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: var(--font-family);
-            line-height: 1.6;
+            color: var(--text-main);
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.15), transparent 25%);
+            background-attachment: fixed;
         }
 
-        .container {
-            max-width: var(--container-width);
-            margin: 0 auto;
-            padding: 0 20px;
-            width: 100%;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* Loading Animation */
-        #preloader {
+        /* --- Navigation --- */
+        nav {
             position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            background-color: var(--bg-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-            transition: opacity 0.5s ease-out;
-        }
-
-        #preloader .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid var(--primary-accent);
-            border-top: 5px solid transparent;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Main Navigation */
-        header {
-            background-color: rgba(10, 16, 32, 0.95);
-            padding: 20px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        header .container {
+            padding: 20px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-accent);
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent-primary);
         }
 
         .nav-links {
             display: flex;
             gap: 30px;
+            align-items: center;
         }
 
         .nav-links a {
-            color: var(--sub-text-color);
-            font-size: 0.95rem;
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
             transition: color 0.3s;
         }
 
         .nav-links a:hover {
-            color: var(--primary-accent);
+            color: var(--accent-primary);
         }
 
-        /* Hero Section */
-        #home {
-            padding: calc(var(--section-padding) + 80px) 0;
-            position: relative;
-            overflow: hidden;
-            background-image: linear-gradient(135deg, rgba(10,16,32,0.9), rgba(17,26,47,0.9)), radial-gradient(circle at center, rgba(26,115,232,0.1), rgba(0,0,0,0));
+        .ist-clock-container {
+            background: var(--glass-bg);
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-primary);
         }
 
-        #home .hero-container {
-            perspective: 1000px;
-        }
-
-        .hero-floating-screens {
-            width: 50%;
-            position: relative;
-            transform-style: preserve-3d;
-            height: 400px;
-            margin-bottom: 40px;
-        }
-
-        .floating-screen {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, #1a1e2b, #12151e);
-            border: 2px solid #2d3748;
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            display: grid;
-            grid-template-rows: 20px 1fr;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            animation: float 10s ease-in-out infinite;
-        }
-
-        .floating-screen .bar {
-            grid-column: 1 / -1;
-            height: 6px;
-            border-radius: 3px;
-            background-color: var(--primary-accent);
-        }
-
-        .floating-screen .square {
-            background-color: var(--card-bg);
-            border-radius: 5px;
-        }
-
-        .screen-1 { transform: rotateY(-30deg) translateZ(-50px); animation-delay: 0s; }
-        .screen-2 { transform: rotateY(-15deg) translateZ(50px) translateX(20px) translateY(20px); animation-delay: -2s; opacity: 0.9; }
-        .screen-3 { transform: rotateY(0deg) translateZ(100px) translateX(40px) translateY(40px); animation-delay: -4s; opacity: 0.8; }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotateY(-30deg); }
-            50% { transform: translateY(-30px) rotateY(-25deg); }
-        }
-
-        .hero-text {
-            width: 100%;
-            max-width: 700px;
-            margin: 0 auto;
+        /* --- Hero Section --- */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            padding: 0 20px;
+            padding-top: 80px;
         }
 
-        .hero-text h1 {
-            font-size: 3rem;
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
             line-height: 1.2;
             margin-bottom: 20px;
-            text-transform: uppercase;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInDown 1s ease;
         }
 
-        .hero-text p {
-            font-size: 1.1rem;
-            color: var(--sub-text-color);
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
             margin-bottom: 40px;
+            animation: fadeInUp 1s ease 0.3s both;
         }
 
-        .cta-button {
-            display: inline-block;
-            background-color: var(--primary-accent);
-            color: #ffffff;
+        .cta-btn {
             padding: 15px 40px;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: background-color 0.3s, transform 0.2s;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            background: var(--accent-primary);
+            border: none;
+            border-radius: 30px;
             cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 10px 20px var(--accent-glow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease 0.6s both;
         }
 
-        .cta-button:hover {
-            background-color: var(--secondary-accent);
-            transform: scale(1.05);
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px var(--accent-glow);
         }
 
-        /* Services Section */
-        #services {
-            padding: var(--section-padding);
-            background-color: var(--card-bg);
+        .price-tag {
+            margin-top: 30px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            animation: fadeInUp 1s ease 0.9s both;
         }
 
-        .section-header {
+        /* --- Sections General --- */
+        section {
+            padding: 100px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
             text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-header h2 {
             font-size: 2.5rem;
-            margin-bottom: 15px;
+            margin-bottom: 50px;
+            position: relative;
         }
 
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: var(--accent-primary);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* --- Services Grid --- */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
         .service-card {
-            background-color: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 10px;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            transition: transform 0.3s, background-color 0.3s;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: transform 0.4s, border-color 0.4s;
             position: relative;
             overflow: hidden;
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
-            background-color: rgba(255,255,255,0.05);
+            transform: translateY(-10px);
+            border-color: var(--accent-primary);
         }
 
         .service-icon {
-            font-size: 2.5rem;
-            color: var(--primary-accent);
-            margin-bottom: 10px;
-        }
-
-        .service-card h3 {
-            font-size: 1.3rem;
-        }
-
-        .service-card p {
-            font-size: 0.9rem;
-            color: var(--sub-text-color);
-        }
-
-        .service-card ul {
-            list-style: none;
-            color: var(--sub-text-color);
-            font-size: 0.9rem;
-        }
-
-        .service-card ul li {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 5px;
-        }
-
-        .service-card ul li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--primary-accent);
-        }
-
-        /* Portfolio Section */
-        #portfolio {
-            padding: var(--section-padding);
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .portfolio-item {
-            position: relative;
-            border-radius: 8px;
-            overflow: hidden;
-            background-color: var(--card-bg);
-            padding-bottom: 60%; /* Aspect ratio */
-            border: 2px solid transparent;
-            transition: border-color 0.3s, transform 0.3s;
-        }
-
-        .portfolio-item:hover {
-            border-color: var(--primary-accent);
-            transform: scale(1.02);
-        }
-
-        .portfolio-item-content {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            right: 15px;
-            bottom: 15px;
-            background: linear-gradient(135deg, #161a29, #0d101a);
-            border-radius: 5px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1rem;
-            color: var(--sub-text-color);
-            text-align: center;
-        }
-
-        /* Pricing Section */
-        #pricing {
-            padding: var(--section-padding);
-            background-color: var(--card-bg);
-        }
-
-        .pricing-section {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .pricing-section h3 {
-            font-size: 1.3rem;
-            color: var(--sub-text-color);
-            margin-bottom: 10px;
-        }
-
-        .pricing-amount {
-            font-size: 4rem;
-            color: var(--primary-accent);
-            font-weight: bold;
+            font-size: 3rem;
+            color: var(--accent-primary);
             margin-bottom: 20px;
         }
 
-        .pricing-amount span {
-            font-size: 2rem;
-            color: var(--text-color);
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
         }
 
-        /* Reviews Section */
-        #reviews {
-            padding: var(--section-padding);
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
         }
 
-        .reviews-slider {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            padding-bottom: 20px;
+        /* --- Reviews Section --- */
+        .reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
         .review-card {
-            background-color: var(--card-bg);
-            padding: 25px;
-            border-radius: 10px;
-            flex: 0 0 calc(33.333% - 13.333px);
-            scroll-snap-align: start;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: transform 0.3s;
-        }
-
-        .review-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .review-rating {
-            color: #ffc107;
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-        }
-
-        .review-card p {
-            font-size: 0.9rem;
-            color: var(--sub-text-color);
-            margin-bottom: 15px;
-            font-style: italic;
-        }
-
-        .review-user {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .user-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--secondary-accent);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            font-weight: bold;
-        }
-
-        .user-info h4 {
-            font-size: 0.9rem;
-        }
-
-        .user-info p {
-            font-size: 0.8rem;
-            color: var(--sub-text-color);
-            margin: 0;
-            font-style: normal;
-        }
-
-        /* Contact Section */
-        #contact {
-            padding: var(--section-padding);
-            background-color: var(--card-bg);
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: start;
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .form-group {
+            background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
             position: relative;
         }
 
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%;
-            padding: 15px 20px;
-            background-color: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 8px;
-            color: #fff;
-            font-size: 0.9rem;
-            transition: border-color 0.3s;
+        .stars {
+            color: #fbbf24;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
         }
 
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
+        .review-text {
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.6;
         }
 
-        .form-group select {
-            color: var(--sub-text-color);
-            appearance: none;
-            -webkit-appearance: none;
+        .reviewer {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-            outline: none;
-            border-color: var(--primary-accent);
+        .reviewer-img {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2rem;
         }
 
-        .form-group select:focus {
-            color: #fff;
+        .reviewer-info h4 {
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+
+        .reviewer-info span {
+            font-size: 0.8rem;
+            color: var(--accent-primary);
+        }
+
+        /* --- Contact Section --- */
+        .contact-container {
+            display: flex;
+            gap: 50px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 50px;
+            backdrop-filter: blur(10px);
         }
 
         .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            background-color: rgba(255,255,255,0.02);
-            padding: 30px;
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.05);
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
         }
 
         .info-item {
             display: flex;
             align-items: center;
             gap: 15px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
         }
 
-        .info-icon {
+        .info-item i {
+            color: var(--accent-primary);
             font-size: 1.5rem;
-            color: var(--primary-accent);
         }
 
-        .info-item h4 {
-            font-size: 1rem;
-            margin-bottom: 5px;
-        }
-
-        .info-item p {
-            font-size: 0.9rem;
-            color: var(--sub-text-color);
-        }
-
-        .contact-map-placeholder {
-            width: 100%;
-            height: 200px;
-            background-color: rgba(26,115,232,0.02);
-            border-radius: 8px;
+        .contact-form {
+            flex: 1;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 0.8rem;
-            color: var(--sub-text-color);
-            text-transform: uppercase;
-            margin-top: 20px;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        /* Footer */
+        .input-group {
+            position: relative;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(0,0,0,0.2);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--accent-primary);
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: none;
+        }
+
+        .submit-btn {
+            background: var(--accent-primary);
+            color: #fff;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #2563eb;
+        }
+
         footer {
-            padding: 40px 0;
-            background-color: var(--bg-color);
-            border-top: 1px solid rgba(255,255,255,0.05);
             text-align: center;
+            padding: 30px;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            margin-top: 50px;
         }
 
-        footer p {
-            font-size: 0.9rem;
-            color: var(--sub-text-color);
+        /* --- Animations --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Responsive Design */
-        @media (max-width: 992px) {
-            :root {
-                --section-padding: 80px 0;
+        @media (max-width: 900px) {
+            .contact-container {
+                flex-direction: column;
+                padding: 30px;
             }
-
-            .container {
-                padding: 0 40px;
-            }
-
-            .hero-text h1 {
+            .hero-title {
                 font-size: 2.5rem;
             }
-
-            .services-grid {
-                grid-template-columns: 1fr;
+            nav {
+                padding: 15px 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
             }
-
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .review-card {
-                flex: 0 0 calc(50% - 10px);
-            }
-        }
-
-        @media (max-width: 768px) {
             .nav-links {
-                display: none; /* Add a mobile menu button later for full premium experience */
-            }
-
-            .hero-text h1 {
-                font-size: 2rem;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .pricing-amount {
-                font-size: 3rem;
-            }
-
-            .pricing-amount span {
-                font-size: 1.5rem;
-            }
-
-            .review-card {
-                flex: 0 0 100%;
+                display: none; /* Hidden on mobile for simplicity in single file */
             }
         }
-
     </style>
 </head>
-<body onload="hideLoader()">
-    <div id="preloader">
-        <div class="spinner"></div>
-    </div>
+<body>
 
-    <header>
-        <div class="container">
-            <div class="logo">CREATIVE WEBSITES</div>
-            <nav class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#services">Services</a>
-                <a href="#portfolio">Portfolio</a>
-                <a href="#reviews">Reviews</a>
-                <a href="#contact">Contact</a>
-            </nav>
-            <a href="#contact" class="cta-button">Get Started</a>
+    <nav>
+        <div class="logo">Creative<span>Web</span></div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#contact">Contact</a>
         </div>
+        <div class="ist-clock-container">
+            <i class="fa-regular fa-clock"></i>
+            <span id="ist-time">Loading IST...</span>
+        </div>
+    </nav>
+
+    <header id="home">
+        <h1 class="hero-title">Premium Web Development<br>For Affordable Growth</h1>
+        <p class="hero-subtitle">We design and develop high-end websites, automated Telegram bots, and powerful social media growth tools tailored to your startup's needs.</p>
+        <a href="#contact" class="cta-btn">Start Your Project</a>
+        <div class="price-tag">Websites Starting at ₹359</div>
     </header>
 
-    <section id="home">
-        <div class="container hero-container">
-            <div class="hero-floating-screens">
-                <div class="floating-screen screen-1">
-                    <div class="bar"></div>
-                    <div class="square"></div>
-                    <div class="square"></div>
-                    <div class="square"></div>
-                </div>
-                <div class="floating-screen screen-2">
-                    <div class="bar"></div>
-                    <div class="square"></div>
-                    <div class="square"></div>
-                    <div class="square"></div>
-                </div>
-                <div class="floating-screen screen-3">
-                    <div class="bar"></div>
-                    <div class="square"></div>
-                    <div class="square"></div>
-                    <div class="square"></div>
-                </div>
+    <section id="services" class="reveal">
+        <h2 class="section-title">Our Premium Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fa-solid fa-code service-icon"></i>
+                <h3>Website Creation</h3>
+                <p>Fully responsive, stunningly designed websites built for speed, SEO, and converting visitors into loyal customers.</p>
             </div>
-            <div class="hero-text">
-                <h1>CREATIVE WEBSITE DEVELOPMENT FOR AFFORDABLE SERVICE</h1>
-                <p>Unlock premium web solutions tailored for your growth without breaking the bank. From sleek websites to custom bots and social engagement, we 'delope' with creativity.</p>
-                <a href="#services" class="cta-button">Explore Our Services</a>
+            <div class="service-card">
+                <i class="fa-brands fa-telegram service-icon"></i>
+                <h3>Telegram Bots</h3>
+                <p>Automate your workflow. Custom coded Telegram bots for customer support, group management, and data handling.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-brands fa-instagram service-icon"></i>
+                <h3>Social Media Boost</h3>
+                <p>Premium Instagram and Facebook services to authentically grow your followers, views, and brand engagement metrics.</p>
             </div>
         </div>
     </section>
 
-    <section id="services">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Premium Services</h2>
-                <p>Tailored digital solutions for your unique business needs.</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">&#x3c;/&#x3e;</div>
-                    <h3>Website Creation</h3>
-                    <p>Modern, responsive websites with premium animations and SEO focus. Perfect for startups and businesses.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">&#x2708;</div>
-                    <h3>Telegram Bot Creation</h3>
-                    <p>Automate your tasks, engage your community, and boost productivity with custom Telegram bots.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">&#x1F4F8;</div>
-                    <h3>Instagram Service</h3>
-                    <ul>
-                        <li>Real Followers</li>
-                        <li>High-quality Views</li>
-                        <li>Targeted Engagement</li>
-                    </ul>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">&#x1F44D;</div>
-                    <h3>Facebook Service</h3>
-                    <ul>
-                        <li>Page Likes & Followers</li>
-                        <li>Post Likes & Reactions</li>
-                        <li>Video Views</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="portfolio">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Portfolio</h2>
-                <p>A quick look at our 'deloped' digital products.</p>
-            </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <div class="portfolio-item-content">Startup Landing Page</div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-item-content">E-commerce Portal</div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-item-content">Blog Website</div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-item-content">Telegram Crypto Bot</div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-item-content">Social Profile Boost</div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-item-content">Real Estate Showcase</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="pricing">
-        <div class="container pricing-section">
-            <div class="section-header">
-                <h2>Premium Value, Incredible Price</h2>
-            </div>
-            <h3>Website Starts</h3>
-            <div class="pricing-amount">₹359 <span>/ only</span></div>
-            <a href="#contact" class="cta-button">Claim Offer</a>
-        </div>
-    </section>
-
-    <section id="reviews">
-        <div class="container">
-            <div class="section-header">
-                <h2>User Reviews</h2>
-                <p>Hear from our satisfied clients about their experiences.</p>
-            </div>
-            <div class="reviews-slider">
-                <div class="review-card">
-                    <div class="review-rating">★★★★★</div>
-                    <p>"Affordable is an understatement! The website they made for my new clothing brand looks incredibly professional and loads fast. Highly recommend!"</p>
-                    <div class="review-user">
-                        <div class="user-avatar">AM</div>
-                        <div class="user-info">
-                            <h4>Amit Mehra</h4>
-                            <p>AM Clothing</p>
-                        </div>
+    <section id="reviews" class="reveal">
+        <h2 class="section-title">Client Success Stories</h2>
+        <div class="reviews-container">
+            <div class="review-card">
+                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p class="review-text">"The UI design they delivered for my startup was phenomenal. The ₹359 starting price is unbeatable for the premium quality you receive. Highly recommended!"</p>
+                <div class="reviewer">
+                    <div class="reviewer-img">R</div>
+                    <div class="reviewer-info">
+                        <h4>Rahul Sharma</h4>
+                        <span>E-commerce Founder</span>
                     </div>
                 </div>
-                <div class="review-card">
-                    <div class="review-rating">★★★★☆</div>
-                    <p>"The Telegram bot they created for our customer support team is a game changer. Saved us so much time and the team was very responsive during development."</p>
-                    <div class="review-user">
-                        <div class="user-avatar">SR</div>
-                        <div class="user-info">
-                            <h4>Sneha Rao</h4>
-                            <p>SR Tech Solutions</p>
-                        </div>
+            </div>
+            <div class="review-card">
+                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+                <p class="review-text">"Their Telegram bot automation saved my support team 20 hours a week. Smooth communication and perfect execution of the code."</p>
+                <div class="reviewer">
+                    <div class="reviewer-img">A</div>
+                    <div class="reviewer-info">
+                        <h4>Ananya Patel</h4>
+                        <span>Tech Startup CEO</span>
                     </div>
                 </div>
-                <div class="review-card">
-                    <div class="review-rating">★★★★★</div>
-                    <p>"I was skeptical about social services, but the results for my Instagram account were fantastic and genuine. It really gave me the visibility boost I needed!"</p>
-                    <div class="review-user">
-                        <div class="user-avatar">PK</div>
-                        <div class="user-info">
-                            <h4>Pranav Kumar</h4>
-                            <p>Digital Creator</p>
-                        </div>
+            </div>
+            <div class="review-card">
+                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p class="review-text">"I used their Instagram growth service and saw real engagement within days. It perfectly complemented the new website they built for us."</p>
+                <div class="reviewer">
+                    <div class="reviewer-img">V</div>
+                    <div class="reviewer-info">
+                        <h4>Vikram Singh</h4>
+                        <span>Digital Creator</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2>Contact Us</h2>
-                <p>Ready to bring your digital vision to life? Let's talk.</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-form">
-                    <form id="contactForm" action="#" method="post">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <select id="service" name="service" required>
-                                <option value="" disabled selected>Service of Interest</option>
-                                <option value="website">Website Creation</option>
-                                <option value="bot">Telegram Bot Creation</option>
-                                <option value="instagram">Instagram Service</option>
-                                <option value="facebook">Facebook Service</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Project Details / Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="cta-button">Send Message</button>
-                    </form>
+    <section id="contact" class="reveal">
+        <h2 class="section-title">Let's Work Together</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <p>Ready to elevate your online presence? Fill out the form or reach out directly. We respond within 24 hours.</p>
+                
+                <div class="info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+91 963 390 2730</span>
                 </div>
-                <div class="contact-info">
-                    <div class="info-item">
-                        <div class="info-icon">&#x260E;</div>
-                        <div>
-                            <h4>Phone</h4>
-                            <p><a href="tel:+919633902730">+91 963 390 2730</a></p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon">&#x2709;</div>
-                        <div>
-                            <h4>Email</h4>
-                            <p>contact@creativewebsites.com</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon">&#x1F310;</div>
-                        <div>
-                            <h4>Website</h4>
-                            <p><a href="#" target="_blank">www.website.com</a></p>
-                        </div>
-                    </div>
-                    <div class="contact-map-placeholder">
-                        <div class="map-icon">&#x1F310;</div>
-                        <p>Our Location Placeholder</p>
-                    </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>www.website.com</span>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>hello@creativewebsites.com</span>
                 </div>
             </div>
+
+            <form class="contact-form" id="premiumForm">
+                <div class="input-group">
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+                <div class="input-group">
+                    <input type="email" placeholder="Email Address" required>
+                </div>
+                <div class="input-group">
+                    <input type="text" placeholder="Service Needed (Website, Bot, etc.)" required>
+                </div>
+                <div class="input-group">
+                    <textarea placeholder="Tell us about your project details..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn" id="submitBtn">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+            </form>
         </div>
     </section>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Creative Websites. All rights reserved.</p>
-        </div>
+        <p>&copy; 2024 Creative Website Development. Built for Premium Performance.</p>
     </footer>
 
     <script>
-        // Hide preloader
-        function hideLoader() {
-            document.getElementById('preloader').style.opacity = '0';
-            setTimeout(function() {
-                document.getElementById('preloader').style.display = 'none';
-            }, 500);
+        // 1. Live Indian Standard Time (IST) Clock
+        function updateClock() {
+            const now = new Date();
+            // Format time specifically for Asia/Kolkata timezone
+            const options = { 
+                timeZone: 'Asia/Kolkata', 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit', 
+                hour12: true 
+            };
+            const timeString = now.toLocaleTimeString('en-US', options);
+            document.getElementById('ist-time').textContent = 'IST: ' + timeString;
         }
+        
+        setInterval(updateClock, 1000);
+        updateClock(); // Initial call
 
-        // Add class to elements when they enter viewport
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
+        // 2. Scroll Reveal Animation Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
                 }
-            });
-        }, { threshold: 0.2 });
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Trigger on load
 
-        // Add fade-in styling in JS since we need to generate full code in HTML
-        document.addEventListener("DOMContentLoaded", () => {
-            const sections = document.querySelectorAll('section:not(#home)');
-            const style = document.createElement('style');
-            style.textContent = `
-                section:not(#home) .section-header, section:not(#home) .services-grid, section:not(#home) .portfolio-grid, section:not(#home) .pricing-section, section:not(#home) .reviews-slider, section:not(#home) .contact-content {
-                    opacity: 0;
-                    transform: translateY(20px);
-                    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-                }
-                .fade-in.section-header, .fade-in.services-grid, .fade-in.portfolio-grid, .fade-in.pricing-section, .fade-in.reviews-slider, .fade-in.contact-content {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            `;
-            document.head.appendChild(style);
-
-            sections.forEach((section) => {
-                // target specific children for the animation
-                observer.observe(section.querySelector('.section-header') || section);
-                observer.observe(section.querySelector('.services-grid') || section);
-                observer.observe(section.querySelector('.portfolio-grid') || section);
-                observer.observe(section.querySelector('.pricing-section') || section);
-                observer.observe(section.querySelector('.reviews-slider') || section);
-                observer.observe(section.querySelector('.contact-content') || section);
-            });
-
-            // Smooth Scroll
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
-
-            // Handle Contact Form Submission
-            document.getElementById('contactForm').addEventListener('submit', function(e) {
-                e.preventDefault(); // Prevent actual form submission for now
-                alert('Thank you for your message! A member of the Creative Websites team will contact you soon.');
-                this.reset();
-            });
+        // 3. Frontend Form Submission Handling
+        document.getElementById('premiumForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent page reload
+            const btn = document.getElementById('submitBtn');
+            const originalText = btn.innerHTML;
+            
+            // Visual feedback for submission
+            btn.innerHTML = 'Sending... <i class="fa-solid fa-spinner fa-spin"></i>';
+            btn.style.background = '#10b981'; // Success green
+            
+            setTimeout(() => {
+                btn.innerHTML = 'Message Sent! <i class="fa-solid fa-check"></i>';
+                this.reset(); // Clear form
+                
+                // Reset button after 3 seconds
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = 'var(--accent-primary)';
+                }, 3000);
+            }, 1500);
         });
     </script>
 </body>
