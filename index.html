@@ -348,7 +348,10 @@ document.getElementById("fileInput").addEventListener("change", function () {
   <script>
    function triggerAd() {
   try {
-    window.open("https://pl29077149.profitablecpmratenetwork.com", "_blank");
+    const link = document.createElement("a");
+    link.href = "https://pl29077149.profitablecpmratenetwork.com";
+    link.target = "_blank";
+    link.click();
   } catch (e) {}
 }
   </script>
@@ -444,12 +447,6 @@ async function sendRequest(event) {
   }, 5000);
   
 </script>
-
-<!-- ✅ Adsterra Social Bar -->
-<script src="https://pl29077150.profitablecpmratenetwork.com/24/a1/34/24a13472107f4e20a1c90092d174403b.js"></script>
-
-<!-- ✅ Adsterra Popunder -->
-<script src="https://pl29077149.profitablecpmratenetwork.com/b5/e6/a5/b5e6a5dc781f1126ccd1cf40eb3dffc5.js"></script>
 
 </body>
 </html>
