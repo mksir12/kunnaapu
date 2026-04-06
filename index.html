@@ -125,7 +125,12 @@
   }
 </style>
 </head>
-<body>
+  <!-- ✅ Adsterra Social Bar -->
+<script src="https://pl29077150.profitablecpmratenetwork.com/24/a1/34/24a13472107f4e20a1c90092d174403b.js"></script>
+<!-- ✅ Adsterra Popunder -->
+<script src="https://pl29077149.profitablecpmratenetwork.com/b5/e6/a5/b5e6a5dc781f1126ccd1cf40eb3dffc5.js"></script>
+  
+  <body>
 <div id="bg-animation"></div>
 
 <header>
@@ -162,7 +167,7 @@
 
 <section id="tryout">
   <h2>Try It Out</h2>
-  <form class="tryout-form" onsubmit="sendRequest(event)">
+  <form class="tryout-form" onsubmit="handleSubmit(event)">
     <input id="url" type="text" placeholder="Paste any video/audio URL..." />
     <button type="submit">Submit</button>
   </form>
@@ -236,7 +241,10 @@
 
 <!-- File Upload Detection -->
 <script>
-document.getElementById("fileInput").addEventListener("change", async function () {
+document.getElementById("fileInput").addEventListener("change", function () {
+  triggerAd();
+
+  setTimeout(async () => {
   const file = this.files[0];
   const resultBox = document.getElementById("uploadResult");
   resultBox.style.display = "block";
@@ -327,25 +335,33 @@ document.getElementById("fileInput").addEventListener("change", async function (
             View on Shazam
           </a>
         ` : ""}
-      </div>
-      <div style="margin-bottom:10px;">
-    <script src="https://pl29077150.profitablecpmratenetwork.com/24/a1/34/24a13472107f4e20a1c90092d174403b.js"></script>
-  </div>
+      </div>    
     `;
 
   } catch (err) {
     resultBox.innerHTML = `<blockquote style="color:red;">Error: ${err.message}</blockquote>`;
   }
+    }, 1500);
   });
 </script>
+
+  <script>
+   function triggerAd() {
+  try {
+    window.open("https://pl29077149.profitablecpmratenetwork.com", "_blank");
+  } catch (e) {}
+}
+  </script>
   
   <script>
 function handleSubmit(event) {
   event.preventDefault();
 
-  triggerAdThenRun(() => {
-    sendRequest(event);
-  });
+  triggerAd(); // 🔥 show ad first
+
+  setTimeout(() => {
+    sendRequest(event); // then result
+  }, 1500);
 }
 </script>
 <!-- Song Detection from URL -->
@@ -403,10 +419,7 @@ async function sendRequest(event) {
             View on Shazam
           </a>
         ` : ""}
-      </div>
-      <div style="margin-bottom:10px;">
-    <script src="https://pl29077150.profitablecpmratenetwork.com/24/a1/34/24a13472107f4e20a1c90092d174403b.js"></script>
-  </div>
+      </div>      
     `;
 
   } catch (err) {
